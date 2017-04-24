@@ -1,6 +1,6 @@
 
-¿½±´Ä¿Â¼ÎÄ¼şµÄÊ±ºò
-cp -Rp (¿½±´Ä¿Â¼ÎÄ¼ş)
+æ‹·è´ç›®å½•æ–‡ä»¶çš„æ—¶å€™
+cp -Rp (æ‹·è´ç›®å½•æ–‡ä»¶)
 
 v-by-one
      CLASSTV_TEST_MODE = 5;
@@ -12,7 +12,7 @@ v-by-one
      WIS_TEST_MODE = 8;
      TCL_TEST_MODE = 4;
      RAKEN_TEST_MODE = 7;
-<<<<<<<<<<<<<<<<<<<<<<<<<<»¢¾¨Î¢Í¶³£ÓÃÖ¸Áî>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<è™é²¸å¾®æŠ•å¸¸ç”¨æŒ‡ä»¤>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 logcat -s tvos
 ./development/scripts/make_usb_upgrade.sh
@@ -29,23 +29,23 @@ m_u16CurRealServiceNumber
 SetProgramAttributes
 printf("progSel55555\n");
 
-»¢¾¨ÔÚ  shell@phoebus:/ $ Ö¸ÁîÏÂÊäÈërecovery¼´¿É½øÈë
+è™é²¸åœ¨  shell@phoebus:/ $ æŒ‡ä»¤ä¸‹è¾“å…¥recoveryå³å¯è¿›å…¥
 
 
-screencap -p /mnt/usb/1E54-20FB/1.png  //½ØÍ¼ÃüÁî
+screencap -p /mnt/usb/1E54-20FB/1.png  //æˆªå›¾å‘½ä»¤
 
 
-1¡¢ufts set fts.fac.factory_mode 1//0   //´ò¿ª¹Ø±Õ¹¤³§Ä£Ê½
-2¡¢ufts set fts.otu.date.utc 1          //Èí¼ş°æ±¾too old Éı¼¶Ö¸Áî
+1ã€ufts set fts.fac.factory_mode 1//0   //æ‰“å¼€å…³é—­å·¥å‚æ¨¡å¼
+2ã€ufts set fts.otu.date.utc 1          //è½¯ä»¶ç‰ˆæœ¬too old å‡çº§æŒ‡ä»¤
    otu
-3¡¢panel_index write [index] Î¢¾¨ÊÇ6    //Éı¼¶ËÀµô£¬»úÆ÷²»ÄÜÕı³£Æô¶¯
-4¡¢ufts reset                           //ÊÇÇå³ımboot²ÎÊıµÄ¶¯×÷³ı·ÇÃ»°ì·¨Éı¼¶ÔÙÖ´ĞĞÕâ¸öÖ¸Áî
-5¡¢logcat -c
+3ã€panel_index write [index] å¾®é²¸æ˜¯6    //å‡çº§æ­»æ‰ï¼Œæœºå™¨ä¸èƒ½æ­£å¸¸å¯åŠ¨
+4ã€ufts reset                           //æ˜¯æ¸…é™¤mbootå‚æ•°çš„åŠ¨ä½œé™¤éæ²¡åŠæ³•å‡çº§å†æ‰§è¡Œè¿™ä¸ªæŒ‡ä»¤
+5ã€logcat -c
    logcat -s LIUX
-   logcat -s "ServerFileDownloader" "LIUX"         //²é¿´´òÓ¡ĞÅÏ¢
-6¡¢data/data/com.classic.factorytest/              //ĞŞ¸ÄÖ÷°åÎÂ¶È×´Ì¬Îªpass                             
+   logcat -s "ServerFileDownloader" "LIUX"         //æŸ¥çœ‹æ‰“å°ä¿¡æ¯
+6ã€data/data/com.classic.factorytest/              //ä¿®æ”¹ä¸»æ¿æ¸©åº¦çŠ¶æ€ä¸ºpass                             
    cache/          lib             shared_prefs/ 
-   ÉÏµç½øÈëmbootÃüÁîĞĞ
+   ä¸Šç”µè¿›å…¥mbootå‘½ä»¤è¡Œ
    recovery
    reset
    #busybox --install /sbin
@@ -56,62 +56,62 @@ screencap -p /mnt/usb/1E54-20FB/1.png  //½ØÍ¼ÃüÁî
   /data/data/com.classic.factorytest # busybox vi shared_prefs/ctv_factory_test_pa
   /data/data/com.classic.factorytest # sync
   /data/data/com.classic.factorytest # reboot -f    
-7¡¢FAC.WHLY.005                                   //ÎÒÃÇµÄ¹¤³§Ä£Ê½
-   FAC.WHLY.006                                   //ÍòÀû´ïµÄ¹¤³§Ä£Ê½
-8¡¢panel_index write  [index]
-   »¢¾¨ÓÃ6                             //»¢¾¨Éı¼¶ÍêÈí¼şÆô¶¯²»ÁË£¬Ğ´Èë¸ÃÖ¸Áî
-9¡¢½øÈë¹¤³§Ä£Ê½²Ëµ¥ 1147
+7ã€FAC.WHLY.005                                   //æˆ‘ä»¬çš„å·¥å‚æ¨¡å¼
+   FAC.WHLY.006                                   //ä¸‡åˆ©è¾¾çš„å·¥å‚æ¨¡å¼
+8ã€panel_index write  [index]
+   è™é²¸ç”¨6                             //è™é²¸å‡çº§å®Œè½¯ä»¶å¯åŠ¨ä¸äº†ï¼Œå†™å…¥è¯¥æŒ‡ä»¤
+9ã€è¿›å…¥å·¥å‚æ¨¡å¼èœå• 1147
 
-<<<<<<<<<<<<<<<<<<<<<<<828³£ÓÃÖ¸Áî>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<828å¸¸ç”¨æŒ‡ä»¤>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-1¡¢setenv ipaddr 192.168.1.22                   //tftpÉı¼¶mboot ²½Öè
+1ã€setenv ipaddr 192.168.1.22                   //tftpå‡çº§mboot æ­¥éª¤
    setenv serverip 192.168.1.11
    save
    reset
 
    mstar auto_update_mboot.txt
    mstar auto_update_tvconfig.txt               
-2¡¢setenv factory_mode 1                       //½øÈë¹¤³§Ä£Ê½
+2ã€setenv factory_mode 1                       //è¿›å…¥å·¥å‚æ¨¡å¼
    saveenv
    reset                                         
-3¡¢adb logcat -v time > D:/5.txt                 //²é¿´´òÓ¡ĞÅÏ¢
-4¡¢ac androidboot.debuggable 1
-   reset                                         //´ò¿ªÈí¼şµÄdebugÄ£Ê½
-5¡¢/data # df
+3ã€adb logcat -v time > D:/5.txt                 //æŸ¥çœ‹æ‰“å°ä¿¡æ¯
+4ã€ac androidboot.debuggable 1
+   reset                                         //æ‰“å¼€è½¯ä»¶çš„debugæ¨¡å¼
+5ã€/data # df
    su
    dd if=/dev/zero of=/data/write.test bs=512k count=6144
-   rm -rf /data/write.test                      //ddÃüÁî²âÊÔemmc¶ÁĞ´ËÙ¶È²½ÖèÈçÏÂ
+   rm -rf /data/write.test                      //ddå‘½ä»¤æµ‹è¯•emmcè¯»å†™é€Ÿåº¦æ­¥éª¤å¦‚ä¸‹
  
-6¡¢ÔÚmbootÏÂÊäÈë£ºemmc speed
-7¡¢ac androidboot.debuggable 1                  //ĞŞ¸Ä·ÖÆÁÏÖÏóµÄ²½Öè
+6ã€åœ¨mbootä¸‹è¾“å…¥ï¼šemmc speed
+7ã€ac androidboot.debuggable 1                  //ä¿®æ”¹åˆ†å±ç°è±¡çš„æ­¥éª¤
    reset
-   ¿ª»úºó£¬²»ÒªµÈ¿ª»úÍê³É
+   å¼€æœºåï¼Œä¸è¦ç­‰å¼€æœºå®Œæˆ
    reboot r
 
    mount -o remount,rw /tvconfig
    cd tvconfig/config/panel/
    ls
    busybox vi UD_VB1_8LANE_55UD2_CSOT_26
-  £¨Ó¦¸ÃÏÈ²é¿´Factory Menu --info--panel£©
+  ï¼ˆåº”è¯¥å…ˆæŸ¥çœ‹Factory Menu --info--panelï¼‰
    /tvconfig/config/panel # sync 
    /tvconfig/config/panel # reboot
    << MStar >># setenv db_table 0
    << MStar >># save
    << MStar >># reset
-8¡¢recovery                                    
-   reset                               //ÖØÆôµ½recoveryºó    
-    busybox --install /sbin            //¹ÒÔØUÅÌ    mkdir u    mount /dev/block/sda1 /u £¨ÕâÀï²»Ò»¶¨ÊÇsda£¬Çë¸ù¾İÊµ¼ÊÇé¿öÑ¡Ôñ£©    cd u    sh su_install.sh
+8ã€recovery                                    
+   reset                               //é‡å¯åˆ°recoveryå    
+    busybox --install /sbin            //æŒ‚è½½Uç›˜    mkdir u    mount /dev/block/sda1 /u ï¼ˆè¿™é‡Œä¸ä¸€å®šæ˜¯sdaï¼Œè¯·æ ¹æ®å®é™…æƒ…å†µé€‰æ‹©ï¼‰    cd u    sh su_install.sh
     reboot -f
-9¡¢/sys/bus/usb/devices
-   cat 7-1/speed                        //²é¿´´«ÊäËÙ¶È
-   cat 7-1/version                      //²é¿´USB°æ±¾
+9ã€/sys/bus/usb/devices
+   cat 7-1/speed                        //æŸ¥çœ‹ä¼ è¾“é€Ÿåº¦
+   cat 7-1/version                      //æŸ¥çœ‹USBç‰ˆæœ¬
 
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<838>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-1¡¢ufts set fts.fac.factory_mode 1     //838//938½øÈë¹¤³§Ä£Ê½Ö¸Áî
+1ã€ufts set fts.fac.factory_mode 1     //838//938è¿›å…¥å·¥å‚æ¨¡å¼æŒ‡ä»¤
    saveenv
    reset
 
-2¡¢recovery                          //ÊÖ¶¯ĞŞ¸ÄÉ¾³ıÉÕÂ¼µÄ
+2ã€recovery                          //æ‰‹åŠ¨ä¿®æ”¹åˆ é™¤çƒ§å½•çš„
    busybox --install /sbin
    ls -la
    cat factory.prop
@@ -128,15 +128,15 @@ screencap -p /mnt/usb/1E54-20FB/1.png  //½ØÍ¼ÃüÁî
    busybox rm -rf panel_index.ini 
    sync
    /factory # reboot -f
-3¡¢ufts set fts.otu.date.utc  //838Éı¼¶¾É°æ±¾µÄÈí¼şÏÈÊäÈë
-   save(Òªsave)
-4¡¢µ½bootÄ£Ê½£¬ÊäÈësetenv hdmitx_hdcp 0£»save   ¼´¿ÉÇå³ıÈí¼şÖĞµÄHDCP KEY
+3ã€ufts set fts.otu.date.utc  //838å‡çº§æ—§ç‰ˆæœ¬çš„è½¯ä»¶å…ˆè¾“å…¥
+   save(è¦save)
+4ã€åˆ°bootæ¨¡å¼ï¼Œè¾“å…¥setenv hdmitx_hdcp 0ï¼›save   å³å¯æ¸…é™¤è½¯ä»¶ä¸­çš„HDCP KEY
 
 
 
-grep -rn "ËÑË÷µÄÄÚÈİ" * //µ±Ç°Ä¿Â¼ÏÂËÑË÷Ïà¹ØÄÚÈİ
+grep -rn "æœç´¢çš„å†…å®¹" * //å½“å‰ç›®å½•ä¸‹æœç´¢ç›¸å…³å†…å®¹
 
-git checkout -- current.txt£¨±¾µØ´úÂëÓĞ¸Ä¶¯Óë·şÎñÆ÷À­ÏÂ´úÂëÓĞ³åÍ»£¬È¥µô±¾µØ¸Ä¶¯current.txt£©
+git checkout -- current.txtï¼ˆæœ¬åœ°ä»£ç æœ‰æ”¹åŠ¨ä¸æœåŠ¡å™¨æ‹‰ä¸‹ä»£ç æœ‰å†²çªï¼Œå»æ‰æœ¬åœ°æ”¹åŠ¨current.txtï¼‰
 
 repo sync -j4
 
@@ -147,7 +147,7 @@ pptv 638
  find . -name *.c | xargs grep -r UpgradeStart
 
 
-<< MStar >># setenv factory_poweron_mode direct //ÉÏµç×Ô¶¯´ı»ú¹ØµôÁË
+<< MStar >># setenv factory_poweron_mode direct //ä¸Šç”µè‡ªåŠ¨å¾…æœºå…³æ‰äº†
 [201338]<< MStar >># saveenv 
 [201343]<< MStar >># sync
 [201346]<< MStar >># reset
@@ -161,9 +161,9 @@ pptv 638
 [144419]<< MStar >># printenv UpgradeStart 
 [144419]UpgradeStart=0
 
-±àÒëÖÆ×÷Éı¼¶°ü
+ç¼–è¯‘åˆ¶ä½œå‡çº§åŒ…
 ./build.sh sup userdebug -j2
-ÖÆ×÷Éı¼¶°ü
+åˆ¶ä½œå‡çº§åŒ…
 ./development/scripts/make_usb_upgrade.s
 24
 Upgrade [[tvservice? (y/N)y
@@ -172,7 +172,7 @@ Upgrade [[tvdatabase? (y/N)y
 Upgrade [[tvcustomer? (y/N)y
 
 
-º£¶ûÉ½¶«¾«ÃÜÒ£¿ØÆ÷Í·ÂëĞŞ¸Ä£¨º£¶ûµÄÒ£¿ØÆ÷£©
+æµ·å°”å±±ä¸œç²¾å¯†é¥æ§å™¨å¤´ç ä¿®æ”¹ï¼ˆæµ·å°”çš„é¥æ§å™¨ï¼‰
 Z:\ppos\pptvcode\638\jinruirui\device\mstar\cv6a638_base\images\PPTV\DSBJ50FHDMODEL\prebuilts\scripts
 #Keycode of remote control
 setenv power_key 0x1A
@@ -181,5 +181,7 @@ setenv ir_header_code1 0xD8
 setenv music 0
 set db_table 0
 
-¿ª»ú¿¨ËÀÔÚ¿ª»úlogo 
+å¼€æœºå¡æ­»åœ¨å¼€æœºlogo 
 logcat -s tvos
+
+æŸ¥çœ‹assertå…³é”®å­—
