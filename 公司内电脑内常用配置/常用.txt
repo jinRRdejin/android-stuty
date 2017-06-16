@@ -1,0 +1,285 @@
+
+logcat |grep "keycode"  遥控器按键打印
+
+
+838 ASPECT 键弹出MAC 与KEY的烧录界面
+938 display HDCP ＫＥＹ与软件版本显示
+938 recoRd HDCP烧录
+
+微鲸硬件
+zhuyubin@cultraview.com
+朱郁槟
+=================================
+解压 .tar.gz
+
+tar -xvf 
+
+
+================================
+
+logcat -c  将之前的logcat信息清空
+logcat -s LIUX
+logcat -s "ServerFileDownloader" "LIUX"
+busybox cp/var/core_dump.978.gz /mnt/usb/sda1
+虎鲸微投的打印
+<<<<<<<<<<<<<<<<<<<<838<<<<<<<<<<<<<<<<<<<<<<<<<
+
+838升级otu
+factory内部为空的时候
+otu BIN-UPDATE-CRONUSD-OPT-FACTORY.bin
+ 838修改写入的MAC与HDCP KEY
+=========切记不要删除hdcp.bin
+busybox --install /sbin
+/ # mount -o remount,rw factory
+ ls -la
+# busybox chmod 777 factory.prop
+/factory # busybox vi factory.prop
+/factory # sync 
+/factory # reboot -f 
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<常用登录网址>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+EKP:
+	http://ekp.cultraview.com:60000/login.jsp?login_error=1
+OA:
+	http://oa.cultraview.com:60001/login/Login.jsp  //jinruirui 123456
+http://mail.cultraview.com/webmail/index.php    //123abc456
+                                                //EKP 
+http://www.cultraview.net/general/ERP/LOGIN/   //订单系统 jinruiurui jinruirui
+Consolas
+。
+SI3US-361500-17409
+。
+
+17187785258
+
+Helios Bugzilla
+bugs.moretv.cn  
+liu_hb@cultraview.com     gpTRCgRbVY
+
+
+ftp.whaley.cn:8200
+ftp.whaley.cn:8200
+
+用户名：ctv_ext 密码：bM4kgqKk
+
+
+
+//高创微鲸地址
+boe_ext  wh352qtL
+软件工程师：李路峰
+FAC.WHLY.036
+
+AA 06 57 03 13 F6
+
+<<<<<<<<<<<<<<<<虚拟机规范代码一定要cp不能快捷键>>>>>>>>>>>>>>>>>>>>>>>>>
+虚拟机进入root权限sudo -s   1
+从root权限切回来 cd /home/liux
+ su - liux
+
+cp /home/liux/format.sh /mnt/hgfs/VM-share/FactoryTest
+format.sh 规范代码
+<<<<<<<<<<<<<<<【修改分屏现象的步骤】>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ac androidboot.debuggable 1
+reset
+开机后，不要等开机完成
+reboot r
+
+ mount -o remount,rw /tvconfig
+ cd tvconfig/config/panel/
+ ls
+ busybox vi UD_VB1_8LANE_55UD2_CSOT_26
+（应该先查看Factory Menu --info--panel）
+/tvconfig/config/panel # sync 
+/tvconfig/config/panel # reboot -f
+<< MStar >># setenv db_table 0
+<< MStar >># save
+<< MStar >># reset
+
+
+recovery
+reset
+#busybox --install /sbin
+busybox cd tvconfig/config/model
+ls
+     (查看customer_1.ini  panel name )
+mount -o remount,rw /tvconfig
+ cd tvconfig/config/panel/
+ ls
+ busybox vi UD_VB1_8LANE_55UD2_CSOT_26
+）
+83855air修改了这几个文件
+UD_VB1_8LANE_W55GEU2P_TPV_009
+/UD_VB1_8LANE_W55TEU3_LSC550_007.ini 1
+UD_VB1_8LANE_W55TEU3_LSC550   1
+UD_VB1_8LANE_WTV55K1_LG_KR_001.ini 0
+UD_VB1_8LANE.ini 0
+
+HDMITX_VB1_4K2K_60P
+<<<<<<<<<<<<<<<<<<<<<<【虎鲸升级EMMC】>>>>>>>>>>>>>>>>>>>>
+打开工具HiTool
+采用升级EMMC的
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+panel_index write  [index]
+经纬 2016/12/16 20:13:55
+虎鲸用6
+
+
+<<<<<<<<<<<<<<<<<<<<【虎鲸微投 升级进入工厂模式】>>>>>>>>>>>>>>>>>
+ufts reset  是清除mboot参数的动作《<除非没办法升级再执行这个指令>》
+otu是U盘升级指令
+也是在mboot下输入
+打开工厂模式的方法：ufts set fts.fac.factory_mode 1//0关闭工厂模式
+
+二、特殊情况下U盘升级：
+1.U盘根目录放BIN-UPDATE-PHOEBUSR.bin升级文件，U盘插入主板USB口；
+2.请上电enter键进入boot指令行，在boot指令行输入下面指令：
+升级时遇到too old 
+ufts set fts.otu.date.utc 1
+otu
+
+升级失败启动不了的时候
+panel_index write [index] 微鲸是6
+
+
+<<<<<<<<<<<<<<<<<<<<【虎鲸微投 修改主板温度pass】>>>>>>>>>>>>>>>>>
+PHOEBUSD
+data/data/com.classic.factorytest/                                          <
+cache/          lib             shared_prefs/   
+
+
+
+上电进入mboot命令行
+recovery
+reset
+
+
+#busybox --install /sbin
+cd data/data/com.
+/data/data/com.classic.factorytest # ls
+[101845]cache         lib           shared_prefs
+/data/data/com.classic.factorytest # cat shared_prefs/ctv_factory_test_param.xml
+/data/data/com.classic.factorytest # busybox vi shared_prefs/ctv_factory_test_pa
+/data/data/com.classic.factorytest # sync
+/data/data/com.classic.factorytest # reboot -f
+
+
+
+adb端口被占用
+netstat -ano | findstr "5037"
+taskkill /f /t /im adb.exe
+adb kill-server
+
+requestWindowFeature(Window.FEATURE_NO_TITLE);//【应用无标题】
+
+<<<<<<<<<<<<<EMMC 型号>>>>>>>>>>>>>>>>>>>>>>>
+KLMBG2JENB-B041  FBGA153  SAMSUNG  三星32GEMMC
+THGBMFG8C2LBAIL FBGA153 32GB 东芝
+KLM8G1GEME B041   8 G emmc   三星
+KLM8G1GEMD-B031 FBGA153  8G 三星
+THGBMFG6C1LBNAIL FBGA153  8G 东芝
+这次是东芝的emmc，如果治具板没做好，就只要把东芝emmc烧录上次的母片，
+能烧录成功就OK了，没必要放到主板上测
+<<<<<<<<<<<<<<<<<<<<<<<<截图使用的命令：>>>>>>>>>>>>>>>>>>>>>
+#screencap -p /U盘路径/文件名.png
+#screencap -p /U盘路径/文件名.png
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<mm编译部分>>>>>>>>>>>>>>>>>>>>>>
+mm编译部分Android文件
+source build/envset
+lunch
+mm
+
+
+ <<<<<<<<<<<<<<<<<<<<<<<<<<,指令安装APK：>>>>>>>>>>>>>>>>>>>>>>>>>>>
+用cmd命令进入APK所在的位置 然后执行pm install -r [APK名字.apk],
+可以用pm install -r XX.apk来强制安装
+$su
+mount –o remount,rw / 这个命令来让我们的/路径文件系统为可读模式，这样就可以实现自由修改了。
+#mount -o remount,rw /system  //挂载系统内的文件夹
+#cp /mnt/usb/sda1/PinyinIME.apk /system/app/PinyinIME.apk
+#pm install -r /mnt/usb路径。
+#sync
+#reboot
+
+拷贝目录文件的时候
+cp -Rp (拷贝目录文件)
+
+挂载外接U盘
+    recovery
+    reset    重启到recovery后
+    busybox --install /sbin    mkdir u    mount /dev/block/sda1 /u （这里不一定是sda，请根据实际情况选择）    cd u    sh su_install.sh
+    reboot -f
+
+
+
+clean all env 清除环境变量
+printenv 打印环境变量
+setenv 设置环境变量 
+saveenv 保存设定的环境变量 
+nand erase 擦除nand flash中数据块 
+nand write 把RAM中的数据写到Nand Flash中
+
+
+
+
+<<<<<<<<<<<<<<<遥控器键值查看位置>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+338-code/packages/inputmethods/PinyinIMEppp	 
+framework/base/core/java/android/view/KeyEvent
+
+
+<<<<<<<<<<<<<<<<<<<<<<<USB 传输速度查看>>>>>>>>>>>>>>>>>>>>>>>.
+1Byte＝8bit
+1KByte=1024Byte
+1M=1024KByte
+1MB/s=8Mbps
+
+1 KB=1024 B
+1 MB= 1024 * 1024 B
+1 GB=1024 MB=1024 * 1024 KB
+Full-speed,传输速率500Kbps～10Mbps(最大12Mbps),用于宽带、音频和耳麦. 
+High-speed,传输速率25Mbps～400Mbps(最大480Mbps),用于视频、存储、照片和宽带.
+过去的USB 1.1已更名为USB 2.0 Full-speed(全速版),而USB 2.0则更名为USB 2.0 High-speed(高速版).
+
+480应该为480Mbps 换算为MB/s 480/8=60MB/s
+5000应该就是5000Mbps    5000/8= 625 MB/s
+/sys/bus/usb/devices   
+
+然后 cat 7-1/speed    查看传输速度
+     cat 7-1/version  查看USB版本
+
+
+
+《<<<<<<<<<<<<<<<<<<<<<<<<<<<<上传代码步骤>>>>>>>>>>>>
+git checkout  ctv/helios-l-828   文件存在
+git log  查看提交日志
+git status  查看提交状态
+git add . 将改动文件添加到仓库
+git status
+git commit   进入添加修改内容说明
+git push origin HEAD:refs/for/ctv/helios-l-828
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<vs2013中MSComm通讯控件的导入>>>>>>>>>>>>>>>>>>>>>>>
+vs2013中MSComm通讯控件的导入和注意事项
+http://jingyan.baidu.com/article/8ebacdf0c96b5549f65cd5fa.html
+
+
+<<<<<<<<<<<<<<<虎鲸微投>>>>>>>>>>>>>>>>>>>>>>>>>>>>>..
+FAC.WHLY.005 我们的工厂模式
+FAC.WHLY.006  万利达的工厂模式
+
+
+onStorageStateChangedAsync
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+getbyte();
+GBK      中文占据两个字节，英文占据一个字节
+UTF-8    中文占据三个字节，英文占据一个字节
+UTF-16be 中文占据两个字节，英文占据两个字节
+
+当字节序列是某种序列变，这时想把字节成字符串编码时
+也需要这种编码方式，否则会出现乱码
+
+文本文件是任意编码的字节序列的
+中文机器上直接创建文本文件，那么文本文件只认识ansi编码
+
+
+

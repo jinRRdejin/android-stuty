@@ -1,0 +1,211 @@
+
+3dec87d25c998cbf6cfbf186ff4f879d   
+ 
+AV  65
+
+ATV 87
+
+Z:\ppos\pptvcode\638\jinruirui\device\mstar\cv6a638_base\preinstall\keylayout\PPTV\CTVMODEL
+
+tbl_InputSource_Type
+
+/ppfactory/data/EDID_BIN 
+
+121 70 55
+108 62 49
+144 81 65
+51  88 40
+95 54 43
+
+80e1108f4840fd2d6fb5e6038532036b
+
+对应的两个1.4
+2eb033fbd3b31ea45d19e7a1d0be16b0（一对）
+
+8969e721efd56c3330b6a72795331a68
+
+
+BIN-UPDATE-HELIOS_PHILIPSR
+
+
+Z:\ppos\ctvcode\55P1S\device\mstar\common\apps\MTvFactory\src\mstar\tvsetting\factory\ui\designmenu
+
+一进入shell就回车输入logcat -s tvos
+然后看下里面有没有assert关键字
+
+报这个error为文件格式不支持，HQ那边现在正在排查原因，
+请问之前有没有更新过utopia这边的库文件，如有更新，更新的时候，an这边的和sn这边的有没有对齐呢？
+ OMX_ErrorMstarVideoFormatUnsupported = (OMX_S32) 0x90000001
+ 01-01 09:52:51.869 1087 5554 E OMXCodec: [OMX.MS.HEVC.Decoder] ERROR(0x90000001, 0) 
+
+startPvrRecord
+startRecord
+
+Writing data at 0x7816089600x -- 100% complete.
+Dump Block: 15269880
+
+
+
+修改了遥控器头码
+
+Z:\ppos\pptvcode\638\jinruirui\device\mstar\cv6a638_base\images\PPTV\DSBJ50FHDMODEL\prebuilts\scripts
+#Keycode of remote control
+setenv power_key 0x1A
+setenv ir_header_code0 0x15
+setenv ir_header_code1 0xD8
+setenv music 0
+set db_table 0
+
+
+PPTV
+printf()
+./build.sh sup userdebug -j2
+制作升级包
+./development/scripts/make_usb_upgrade.s
+24
+
+Upgrade [[mboot? (y/N)n
+Upgrade [[recovery? (y/N)n
+Upgrade [[boot? (y/N)n
+Upgrade [[tee? (y/N)n
+Upgrade [[RT_PM? (y/N)n
+Upgrade [[system? (y/N)n
+Upgrade [[userdata? (y/N)n
+Upgrade [[cache? (y/N)n
+Upgrade [[tvservice? (y/N)y
+Upgrade [[tvconfig? (y/N)y
+Upgrade [[tvdatabase? (y/N)y
+Upgrade [[tvcustomer? (y/N)y
+Upgrade [[factory? (y/N)n
+Upgrade [[ppstorage? (y/N)n
+Upgrade [[systembackup? (y/N)n
+UpgradeImage Generating.....
+
+
+
+Z:\ppos\pptvcode\638\jinruirui
+
+
+[USB] bulk max packet size: ep(in) 0x200, ep2(out) 0x200
+[USB] bulk0 is in
+max lun:0
+1 Storage Device(s) found
+
+Writing data at 0x7816089600x -- 100% complete.
+Dump Block: 15269880
+<< MStar >># y
+
+<uses-permission android:name="android.permission.CONNECTIVITY_INTERNAL"> </uses-permission>
+<uses-permission android:name="android.permission.REBOOT"/>
+
+
+876162 蓝牙WIFI
+681705
+647406
+
+745645 
+X:\828\vendor\mstar\pm\Zenonia\Project\Mstar\Source\ir\ir_list
+
+framework/base/core/java/android/view/KeyEvent
+
+Dear 丁涛：
+
+5T10方案的  订单,客户提供了生产母片，请帮今天完成验证，并提供checklist
+谢谢！
+
+主板信息：938方案 65AIR（3GDDR，32G emmc）
+请拿938治具板来验证
+
+版本号为：
+git config --global user.email "jinruirui@cultraview.com"
+git config --global user.name "jinruirui"
+
+
+ 
+细说Java多线程之内存可见性
+细说多线程之Thread VS Runnable
+
+JOSN java 版// Android http  //Service的断点续传// 看到 //多线程的断点续传 //最后Android services 之 notification
+
+
+
+ 
+
+
+下载地址为：
+
+
+CV5T10L_A_11_170110微鲸定制
+
+cat factory.prop
+cat factory.prop
+model_index
+panel_index
+
+功放的主要性能指标有输出功率，频率响应，失真度，信噪比，输出阻抗，阻尼系数等
+
+
+常用的SQL方法：
+支持SQL92大部分规范：CREATE：Table、view、index、trigger（触发器）
+                     TRANSACTION insert select delete  Drop Alter ATTAC
+约束条件：not null（字段非空）unique（唯一）primary key （组件一个ID）check （字段检查）default 默认数字
+UD_VB1_8LANE.ini
+
+638配置问题
+\\192.168.3.9\lichuan\638\device\mstar\cv6a638_international\preinstall\keylayout
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//添加判断WiFi等级的
+			level = wifiInfo.getRssi();
+			 
+			  wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);  
+		        // 使用定时器,每隔5秒获得一次信号强度值  
+		        Timer timer = new Timer();  
+		        timer.scheduleAtFixedRate(new TimerTask() {  
+		            @Override  
+		            public void run() {  
+		                wifiInfo = wifiManager.getConnectionInfo();  
+		                //获得信号强度值  
+		                level = wifiInfo.getRssi();  
+		                //根据获得的信号强度发送信息  
+		                if (level <= 0 && level >= -50) {  
+		                    Message msg = new Message();  
+		                    msg.what = 1;  
+		                    handler.sendMessage(msg);  
+		                } else if (level < -50 && level >= -70) {  
+		                    Message msg = new Message();  
+		                    msg.what = 2;  
+		                    handler.sendMessage(msg);  
+		                } else if (level < -70 && level >= -80) {  
+		                    Message msg = new Message();  
+		                    msg.what = 3;  
+		                    handler.sendMessage(msg);  
+		                } else if (level < -80 && level >= -100) {  
+		                    Message msg = new Message();  
+		                    msg.what = 4;  
+		                    handler.sendMessage(msg);  
+		                } else {  
+		                    Message msg = new Message();  
+		                    msg.what = 5;  
+		                    handler.sendMessage(msg);  
+		                }  
+		  
+		            }  
+		  
+		        }, 1000, 5000);   
+			 
