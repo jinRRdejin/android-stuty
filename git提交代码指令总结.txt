@@ -1,0 +1,81 @@
+本地链接 IPv6 地址. . . . . . . . : fe80::adf9:8c2a:107f:2bae%15
+IPv4 地址 . . . . . . . . . . . . : 192.168.3.21
+子网掩码  . . . . . . . . . . . . : 255.255.255.0
+默认网关. . . . . . . . . . . . . : 192.168.3.1
+
+
+
+1、 git fetch origin  ctv/helios-l-828:ctv/helios-l-828 将远程仓库分之同步到本地
+    git pull 
+2、 git checkout  ctv/helios-l-828   文件存在
+3、 git log  查看提交日志
+4、 git status  查看提交状态
+5、 git add . 将改动文件添加到仓库
+6、 git status
+7、 git commit   进入添加修改内容说明
+
+
+git push origin HEAD:refs/for/ctv/helios-l-828
+
+修改更换邮箱
+git config --global user.name "zhaolong"
+git config --global user.email "zhaolong@cultraview.com"
+
+第一次提交都需要安装Hook
+gitdir=$(git rev-parse --git-dir); scp -p -P 29418 zhaolong@gerrit-p.moretv.cn:hooks/commit-msg ${gitdir}/hooks/
+
+
+git commit --amend  修改说明内容
+
+
+git reset --hard d00ed33fb3bb31e3ab5576a7463fe237cc10e471  //使用 git reset ID 来恢复文件
+ 
+git config --global user.name "Your Name"
+git config --global user.email you@example.com
+全局的通过vim ~/.gitconfig来查看
+
+
+git checkout l-cmc-828 
+git checkout ctv/helios-l-828 
+从远程分支 checkout 出来的本地分支，称为_跟踪分支(tracking branch)_。
+跟踪分支是一种和远程分支有直接联系的本地分支。
+在跟踪分支里输入Git push，Git 会自行推断应该向哪个服务器的哪个分支推送数据。
+反过来，在这些分支里运行git pull 会获取所有远程索引，并把它们的数据都合并到本地分支中来。
+
+git checkout -b [分支名] [远程名]/[分支名]
+
+git checkout --track origin/branch_name
+
+git branch -r         查看远程分支
+
+
+git remote -v         查看远程分支？
+$ git fetch origin master:temp     从远程获取最新版本到本地
+$ git diff temp       比较本地仓库与下载的temp分支
+$ git merge temp      合并temp分支到本地的master分支
+$ git branch -d temp  删除temp该分支：
+
+
+建立本地对应分支
+git checkout --track 或者 git checkout -b
+如：
+git checkout --track  origin/dev-zhengqigit ，
+git  checkout -b dev-zhengqi  origin/dev-zhengqi
+
+建立分支后，默认会进到新建的分支里，如果想进去其他分支，可以通过
+git checkout 加分支名切换
+如:
+git checkout zhengqi
+
+$ git reset --hard HEAD^  版本回退到上一版本
+$ git reset --hard 3628164  版本回退到具体的版本
+
+
+
+1.在你的本地目录下手动删除你要删除的东西
+2.在客户端输入：git commit -a -m "A file was deleted"
+3.在客户端：git push
+4.在客户端输入你的用户名和密码
+
+一般我们就利用 git push --set-upstream origin branch_name 来在远程创建一个与本地branch_name 分支同名的分支并跟踪；利用 git checkout --track orgin/branch_name 来在本地创建一个与 branch_name 同名分支跟踪远程分支。
+
