@@ -1,0 +1,23 @@
+
+
+/*
+     * bundle的认识：
+     * 一种存放字符串和Parcelable类型数据的map类型容器，通过存放数据键（KEY）获取对应的各个类型的value值，而且必须
+     * 通过KEY来获取
+     * 
+     * bundle的用法
+     * Bundle类相当于map类就是一个映射，用Bundle绑定数据，便于数据处理，他主要用于Activity之间的数据传递
+     * 
+     * */
+	 
+//TestBundle.java
+
+	 Bundle bundle = new Bundle();
+	 bundle.putString("name",tony);
+	 Intent intent = new Intent(TestBundle.this,TestBundle_getvalue.class);
+	 intent.putExtras(bundle);
+	 startActivity(intent);
+
+//TestBundle_getvalue
+	 Bundle bundle = getIntent().getExtras();
+	 String name = bundle.get("name")
