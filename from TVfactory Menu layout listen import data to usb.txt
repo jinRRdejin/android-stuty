@@ -1,0 +1,134 @@
+
+
+工厂菜单中导出TV系统的panel信息代码流程
+
+
+
+1、linearlayout_menu_all_info_export.setOnClickListener(this);通过布局文件监听触发
+2、 case R.id.linearlayout_menu_all_info_export:
+                othenDevManager.exportAllTvInfo(devHandler);
+                break;  //通过布局文件启动handler机制（runnable方法）
+3、
+
+    public void exportAllTvInfo(final Handler mHandler){
+        new Thread(){
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                LoadDataManager LoadDate =new LoadDataManager(context, sysControlManager);
+                if(!LoadDate.LoadingStart()){
+                    mHandler.sendEmptyMessage(FactoryMenuActivity.PLUG_INTO_UDISK_DEVICE);
+                }else {
+                    mHandler.sendEmptyMessage(FactoryMenuActivity.EXPORT_TV_INFO_SUCCESS);
+                }
+            }
+        }.start();
+    }
+	
+4、检查下载路径
+    public boolean LoadingStart(){
+        return LoadingDate();
+    }
+	
+	 public boolean LoadingDate(){
+        String usbPath=getAvaliableUsbPath();//拿到U盘路径
+        if(usbPath==null){
+            return false;
+        }
+        String bastDir=usbPath+"/"+MODULE_FILE_PATH;		
+        LoadingAudioConfig(bastDir+"/TVConfig");
+        LoadingPanelParam(bastDir + "/panel");  //以下载屏参文件为例
+        LoadingPQ(bastDir + "/pq");	
+        LoadingTvProgram(bastDir + "/TVPROGRAMDB");
+        
+        return true;
+    }
+	
+	private String getAvaliableUsbPath(){
+        String[] path =getExternelUsbPaths();
+        if(path==null){
+            Log.i("JACKEY",">> getAvaliableUsbPath : NULL ");
+            return null;
+        }
+        String usbpath=null;
+        for(int i=0; i<path.length;i++){
+            File usbFile=new File(path[i]);
+            if(usbFile.isDirectory()&& usbFile.canRead()){
+                usbpath=path[i];
+                break;
+            }
+        }
+        Log.i("JACKEY",">> getAvaliableUsbPath :usbpath = "+usbpath);
+        return usbpath;	
+    }
+	//拿到路径组成的字符数组
+	
+	
+    private  String[] getExternelUsbPaths() {
+        String[] paths = null;
+        StorageManager storageManager = (StorageManager)mContext.getSystemService(Context.STORAGE_SERVICE);
+        try {
+            paths = (String[]) StorageManager.class.getMethod("getVolumePaths",null).invoke(storageManager, null);
+        
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        if (paths == null)
+            return paths;
+        if (paths.length > 1) {
+            ArrayList<String> array = new ArrayList<String>();
+            String[] temp = new String[paths.length];
+            for (int i = 0; i < paths.length; i++) {
+                File f = new File(paths[i]);
+                if (paths[i].equals(getLocalPath()) == false && f.exists()) {
+                    if(f.getFreeSpace()>100){
+                        array.add(paths[i]);
+                    }
+                }
+            }
+            temp = new String[array.size()];
+            array.toArray(temp);
+            return temp;
+        } else{
+            return null;
+        }
+    }
+	
+	由于在getAvaliableStorage()方法中我们获取的是可写（canWrite）的设备，
+	需要加上相应权限： <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> ，
+	否则获取不到存储设备。
+
+	
+	
+	搞好U盘路径了，开始下载文件  LoadingPanelParam(bastDir + "/panel");
+	
+	 private boolean LoadingPanelParam(String SavePath){
+        boolean ret=false;
+        ret=copySystemFile("/factory/panel/panel_id_1.ini",SavePath);
+        return ret;
+    }
+	
+	从系统中拷贝到了U盘
+	 public boolean copySystemFile(String src,String des){
+        File file = new File(des);
+        sysControlManager.systemCmd("su");
+        if(!file.exists()){
+        	sysControlManager.systemCmd("mkdir -p "+des);
+        }
+        sysControlManager.systemCmd("cp -f "+src+" "+des);
+        sysControlManager.systemCmd("sync");
+        //MD5 CHECK here
+        return true;
+    }
+
+	
+	
+	
+	
+	
+	
+	
