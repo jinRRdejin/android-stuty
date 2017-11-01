@@ -1,0 +1,71 @@
+感觉自己要总结一下了，这几天倒腾下来，可是折腾人。
+完全小白，自己搭建虚拟机下Ubuntu的Android编译环境。Ubuntu就重装了两遍，没别的原因，不满意。。。
+网上找资源，下载了一个Ubuntu16.04的镜像文件，开始吧！在一阵下一步下一步之后，安装完成。。。
+1、结果进不去，Intel VT-x 处于禁用状态，进入Bios，将Intel Virtualization Technology改成Enable。
+2、处理全屏问题，安装VMware Tools，将安装包cp /tmp 解压，进入解压文件 运行./vmware-install.pl
+	alt+ctrl+enter进入全屏，OK
+3、终端字体小的问题
+	鼠标放在左上角，选择Edit->profile preference,弹出的界面中选中Custom font 调整大小即可
+4、映射本地驱动盘，通过samba服务，有专门总结过。
+5、repo sync拉取代码。
+6、通过这几天网上的查找，发现编译Android源码需要安装一堆库，具体不知道需要哪些，索性都安装吧！毕竟编译一次要4-5个小时。想想真要命啊！罗列如下：
+安装命令，sudo apt-get install package
+删除命令，sudo apt-get remove package
+
+bison flex gperf build-essential git gperf gnupg 
+curl libxml2-utils  
+python-markdown xsltproc tofrodos  libncurses5-dev
+x11proto-core-dev  zlib1g-dev libreadline6-dev libx11-dev libc6-dev lib32ncurses5-dev lib32z1-dev 
+gcc g++ dos2unix
+
+7、安装JDK1.6版本
+sudo apt-get install sun-java6-jdk
+配置环境变量.bashrc
+export JAVA_HOME=/home/ymz/tools/jdk1.6.0_33_x64
+export JRE_HOME=/home/ymz/tools/jdk1.6.0_33_x64/jre
+export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH
+export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH:
+
+8、make安装
+由于make4.0版本太高，改为安装make3.82版本
+make资源下载地址，ftp://ftp.gnu.org/gnu/make/
+cd make-3.82
+
+9、编译过程中可能会出现其他错误
+
+10、编译mboot，报错
+ /bin/sh: 1: Syntax error: Missing '))'
+ Makefile:2285: recipe for target 'out/chunk_header.bin' failed
+
+解决办法：
+sudo dpkg-reconfigure dash 选择no
+
+11、编译kernal时，报错
+ /usr/bin/ld: 找不到 -lgcc
+ /usr/bin/ld: 当搜索用于 /usr/lib/gcc/x86_64-linux-gnu/5/libgcc_s.so 时跳过不兼容的 -lgcc_s
+ /usr/bin/ld: 找不到 -lgcc_s
+解决办法：
+sudo apt-get install g++-5-multilib
+
+项目问题
+编译找不到sys.h等文件
+进入kernal -> 3.10.40,编辑Makefile文件里的内容
+将此三项注释掉即可
+#HOSTCFLAGS   += -m32
+
+#HOSTCXXFLAGS += -m32
+
+#HOSTLDFLAGS  += -m32
+
+12、编译Android
+make: *** [out/target/product/cv6a338_base/obj/SHARED_LIBRARIES/libwebviewchromium_intermediates/LINKED/libwebviewchromium.so] Error 1
+线程改为单线程编译（build.sh内的j2改为j1），正在进行...
+通过添加swap的方式，虚拟内存。
+另一种是增加硬件内存，等待验证。。。
+
+
+13、编译supnova时
+无害通过。。。万幸
+
+14、查看软件版本
+  软件名 -v

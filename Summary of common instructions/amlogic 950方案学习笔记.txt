@@ -1,0 +1,155 @@
+
+
+1.深圳公版代码下载方法：
+
+route -p add 10.10.11.0 mask 255.255.255.0 172.16.2.1
+gerrit 账号
+    连接深圳 VPN 后，登陆 http://10.10.11.163:5096/login/register
+                账号      密码
+    刘虹斌     
+    李川       
+
+wuwenjie  123456
+repo init -u ssh://wuwenjie@10.10.11.163:29418/amlogic/T950/manifest -b ctv-baseline -m t950_cultraview_git.xml
+
+
+2.PPTV代码下载方法：
+开发分支代码下载：
+10.200.10.126:29418
+repo init -u ssh://jinruirui@10.200.10.126:29418/AmlogicT950/manifest  -m pptv.xml 
+repo sync
+
+
+
+push方法 ：
+git push pptv HEAD:refs/for/pptv_t950_dev
+scp -p -P 29418 liu_hb@ppgerrit.com:hooks/commit-msg `git rev-parse --git-dir`/hooks/commit-msg
+
+
+
+3.代码结构：
+
+版型：
+\vendor\cultraview
+李振：
+18939823063
+michaelli@pptv.com
+
+
+
+
+[Feature] <jb> <jira-id-none>修改安康遥声音平衡键的code
+[Module] jb| device
+[Details]
+       Description    : 修改安康遥声音平衡键的code
+       Root Cause     : none
+       Solution       : none
+       Side Effect    : none
+       Test Suggestion: none
+
+
+原厂支持：
+ 编译方法：
+    source build/envsetup.sh
+    lunch p341-userdebug-32
+    make otapackage -j8
+
+当前编译方法：
+./build/core/build_t950.sh  all userdebug -j4
+
+
+1.如何切换屏参
+进入uboot
+setenv panel_type lvds_2
+save
+reset
+
+2.在uboot下
+
+AML-陈工 2017/8/30 17:11:51
+store dtb read 1080000
+fdt addr 1080000
+fdt print /
+
+AML-陈工 2017/8/30 17:11:57
+可以打印dts
+
+
+3.如何导出当前屏参
+mount -rw -o remount /system
+
+shell@p383:/ # echo 0 > /proc/sys/kernel/printk
+shell@p383:/ # cd /sys/class/unifykeys/                                        
+shell@p383:/sys/class/unifykeys # echo panel_ini_path > name
+shell@p383:/sys/class/unifykeys # cat read
+657246db,V001,/factory/panel/panel_id_1.ini
+shell@p383:/sys/class/unifykeys #
+kernel 打印怎么放开？
+echo 7 >/proc/sys/kernel/printk ?
+
+cp -rvf /factory/panel/panel_id_1.ini storage/udisk0/
+
+
+pm install -r /storage/udisk0/TVFactory.apk
+FactoryTestActivity
+KEYCODE_PROG_YELLOW
+
+
+
+4.编译dts
+
+make dtbimage -j8
+会得到一个dtb.img
+
+然后拷贝到u盘
+uboot下：
+usb start
+fatload usb 0 1080000 dtb.img
+store dtb write 1080000
+
+o
+5.查看lcd info:
+
+setenv lcd_debug_print 1
+save
+res
+
+uboot下输入：
+lcd info
+
+
+6.修改屏输出模式
+
+outputmode=1080p60hz
+
+setenv outputmode 768p60hz
+save
+res
+
+挂载system分区：
+mount -rw -o remount /system
+
+EMMC读写测试实现过程
+mount -o remount /system
+cp /storage/sdcard/disk-test7.0.sh /system/bin（文件目录可变）
+chmod 777 /system/bin/disk-test7.0.sh
+cd /data/
+disk-test7.0.sh
+
+
+7 、你那边在uboot 下 amlmmc part 1 打出清单来算以下
+你们的字幕切换用的是什么接口,用的Mediaplayer的setOnTimedTextLister
+amlogic平台的签名文件是在build\target\product\security
+amlogic平台的签名文件是在build\target\product\security
+
+
+8、echo mac > /sys/class/unifykeys/name
+echo B8:3D:4E:11:22:33 > /sys/class/unifykeys/write     将MAC设置为空格即可
+
+查看MAC：
+cd sys/class/unifykeys
+echo mac > name
+hexdump -C ./read
+
+
+

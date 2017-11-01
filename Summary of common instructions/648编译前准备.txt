@@ -1,0 +1,24 @@
+编译前准备：
+1.根目录build_648.sh文件按照本机环境配置，主要supernova用的是（none-elf）2014.09的工具链;
+2.进入vendor\mstar\kernel\linaro\Makefile
+#HOSTCFLAGS   += -m32
+#HOSTCXXFLAGS += -m32
+#HOSTLDFLAGS  += -m32
+
+3.安装和更新一些工具：
+sudo apt-get install pip    //pip 就是 python 库的管理软件， 同 apt-get 的性质是一样的。
+sudo pip install --upgrade pycrypto     //更新一些python库
+sudo apt-get install libarchive-zip-perl  //安装crc32工具
+
+编译方法：
+./build_648.sh OTA userdebug
+
+
+arm-linux-gnueabi-gcc Command not found
+
+sudo apt-get install gcc-arm-linux-gnueabi
+
+
+jack-server
+
+http://blog.sina.com.cn/s/blog_8acf1be10102w6a7.html

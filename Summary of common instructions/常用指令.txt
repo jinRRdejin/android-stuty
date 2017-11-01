@@ -1,0 +1,269 @@
+busybox vi UD_VB1_8LANE.ini
+
+cp tvconfig/config/panel/UD_VB1_8LANE.ini  
+
+更新HASH KEY 关闭杜比，需要重新全部测试媒体格式
+
+
+sed -i 's/ENABLE_DOLBY =.*/ENABLE_DOLBY = 0/g' ${COMMON_FEATURE_MK_FILE}
+
+ASCAII 0 48 A 65 a 97
+
+6426.09
+拷贝目录文件的时候
+cp -Rp (拷贝目录文件)
+
+v-by-one
+     CLASSTV_TEST_MODE = 5;
+     CLASSTV_BURN_MODE = 21;
+     CLASSTV_EXIT_BURN_MODE = 22;
+     TPV_TEST_MODE = 63;
+     SFU_TEST_MODE = 0;
+     KTC_TEST_MODE = 9;
+     WIS_TEST_MODE = 8;
+     TCL_TEST_MODE = 4;
+     RAKEN_TEST_MODE = 7;
+
+在Linux环境下编译+2>&1|tee make.log  即可保存打印日志
+.bashrc
+
+U盘上创建whaleylog目录,自动抓取log
+<<<<<<<<<<<<<<<<<<<<<<<<<<虎鲸微投常用指令>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+logcat -s tvos
+./development/scripts/make_usb_upgrade.sh
+./build.sh sup userdebug -j2
+24
+
+DoProgSetDelete
+SetProgramDelete
+SetProgramDel
+E_ATTRIBUTE_DELETE
+
+SetProgramDel
+m_u16CurRealServiceNumber
+SetProgramAttributes
+printf("progSel55555\n");
+
+虎鲸在  shell@phoebus:/ $ 指令下输入recovery即可进入
+
+
+screencap -p /mnt/usb/1E54-20FB/1.png  //截图命令
+
+
+1、ufts set fts.fac.factory_mode 1//0   //打开关闭工厂模式
+2、ufts set fts.otu.date.utc 1          //软件版本too old 升级指令
+   otu
+3、panel_index write [index] 微鲸是6    //升级死掉，机器不能正常启动
+4、ufts reset                           //是清除mboot参数的动作除非没办法升级再执行这个指令
+5、logcat -c
+   logcat -s LIUX
+   logcat -s "ServerFileDownloader" "LIUX"         //查看打印信息
+6、data/data/com.classic.factorytest/              //修改主板温度状态为pass                             
+   cache/          lib             shared_prefs/ 
+   上电进入mboot命令行
+   recovery
+   reset
+   #busybox --install /sbin
+   cd data/data/com.
+   /data/data/com.classic.factorytest # ls
+   [101845]cache         lib           shared_prefs
+  /data/data/com.classic.factorytest # cat shared_prefs/ctv_factory_test_param.xml
+  /data/data/com.classic.factorytest # busybox vi shared_prefs/ctv_factory_test_pa
+  /data/data/com.classic.factorytest # sync
+  /data/data/com.classic.factorytest # reboot -f    
+7、FAC.WHLY.005                                   //我们的工厂模式
+   FAC.WHLY.006                                   //万利达的工厂模式
+8、panel_index write  [index]
+   虎鲸用6                             //虎鲸升级完软件启动不了，写入该指令
+9、进入工厂模式菜单 1147
+
+<<<<<<<<<<<<<<<<<<<<<<<828常用指令>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+1、setenv ipaddr 192.168.1.22                   //tftp升级mboot 步骤
+   setenv serverip 192.168.1.11
+   save
+   reset
+
+   mstar auto_update_mboot.txt
+   mstar auto_update_tvconfig.txt               
+2、setenv factory_mode 1                       //进入工厂模式
+   saveenv
+   reset                                         
+3、adb logcat -v time > D:/ss.txt                 //查看打印信息
+4、ac androidboot.debuggable 1
+   reset                                         //打开软件的debug模式
+5、/data # df
+   su
+   dd if=/dev/zero of=/data/write.test bs=512k count=6144
+   rm -rf /data/write.test                      //dd命令测试emmc读写速度步骤如下
+ 
+6、在mboot下输入：emmc speed
+7、ac androidboot.debuggable 1                  //修改分屏现象的步骤
+   reset
+   开机后，不要等开机完成
+   reboot r
+
+   mount -o remount,rw /tvconfig
+   cd tvconfig/config/panel/
+   ls
+   busybox vi UD_VB1_8LANE_55UD2_CSOT_26
+  （应该先查看Factory Menu --info--panel）
+   /tvconfig/config/panel # sync 
+   /tvconfig/config/panel # reboot
+   << MStar >># setenv db_table 0
+   << MStar >># save
+   << MStar >># reset
+8、recovery                                    
+   reset                               //重启到recovery后    
+    busybox --install /sbin            //挂载U盘    
+    mkdir u    
+     mount /dev/block/sda1 /u （这里不一定是sda，请根据实际情况选择）    
+     cd u    sh su_install.sh
+    reboot -f
+9、/sys/bus/usb/devices
+   cat 7-1/speed                        //查看传输速度
+   cat 7-1/version                      //查看USB版本
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<838>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+1、ufts set fts.fac.factory_mode 1     //838//938进入工厂模式指令
+   saveenv
+   reset
+
+2、recovery                          //手动修改删除烧录的
+   busybox --install /sbin
+   ls -la
+   cat factory.prop
+   /factory # cd ..
+   [154037]/ # ls -la
+   cat /proc/meminfo
+   busybox cat /proc/meminfo
+   cd factory/
+   mount -o remount,rw /factory
+   busybox chmod 777 factory.prop 
+[154650]/ # cd factory/
+   busybox rm -rf factory.prop
+   busybox rm -rf model_index.ini
+   busybox rm -rf panel_index.ini 
+   sync
+   /factory # reboot -f
+3、ufts set fts.otu.date.utc  //838升级旧版本的软件先输入
+   save(要save)
+4、到boot模式，输入setenv hdmitx_hdcp 0；save   即可隐藏软件中的HDCP KEY
+
+set factory_mode 0
+saveenv
+reset
+
+grep -rn "搜索的内容" * //当前目录下搜索相关内容
+
+git checkout -- current.txt（本地代码有改动与服务器拉下代码有冲突，去掉本地改动current.txt）
+
+repo sync -j4
+
+git stash 本地没有提交的改动可以撤回到最开始版本
+
+
+=============================================638=========================================
+pptv 638
+
+dumpsys input
+dumpsys activity          //查看当前系统activity运行情况
+am start -n mstar.factorymenu.ui/mstar.tvsetting.factory.ui.designmenu.DesignMenuActivity 
+
+dumpsys activity service com.pptv.framework.tvservice/.TvService notify --tv PropChange atv PROP_SIGNAL_STATUS NORMAL
+
+
+
+//快速调出工厂菜单
+
+ find . -name *.c | xargs grep -r UpgradeStart
+
+代码中修改的标志位
+
+stPowerMode
+ 
+ factory.sql direct memory secondary
+<< MStar >># setenv factory_poweron_mode direct //上电自动待机关掉了
+[201338]<< MStar >># saveenv 
+[201343]<< MStar >># sync
+[201346]<< MStar >># reset
+
+
+<< MStar >># setenv UpgradeStart 0   //Do not upgrade repeat!
+[144415]<< MStar >># saveenv 
+[144416]<< MStar >># pr
+[144418]<< MStar >># printenv U
+[144418]  UARTOnOff UpgradeStart
+[144419]<< MStar >># printenv UpgradeStart 
+[144419]UpgradeStart=0
+
+编译制作升级包
+./build.sh sup userdebug -j2
+制作升级包
+./development/scripts/make_usb_upgrade.sh
+24
+Upgrade [[tvservice? (y/N)y
+Upgrade [[tvconfig? (y/N)y
+Upgrade [[tvdatabase? (y/N)y
+Upgrade [[tvcustomer? (y/N)y
+
+
+海尔山东精密遥控器头码修改（海尔的遥控器）
+Z:\ppos\pptvcode\638\jinruirui\device\mstar\cv6a638_base\images\PPTV\DSBJ50FHDMODEL\prebuilts\scripts
+#Keycode of remote control
+setenv power_key 0x1A
+setenv ir_header_code0 0x15
+setenv ir_header_code1 0xD8
+setenv music 0
+set db_table 0
+
+开机卡死在开机logo 
+logcat -s tvos
+
+jackey@jackey-virtual-machine:~$ cat .gitconfig 
+[user]
+	name = liu_hb
+	email = liu_hb@cultraview.com
+[color]
+	ui = auto
+
+
+repo init -u ssh://116.228.90.154:8001/Mstar648/manifest.git -b 648_cultraview -m cultraview.xml
+repo sync
+
+
+/system/usr/keylayout # ls
+Vendor_3697_Product_0001.kl  遥控器的KL文件
+
+logcat -c
+logcat
+
+=======================================================
+清除已经烧录的MAC地址
+[201834]<< MStar >># print macaddr
+[201834]macaddr=B8:3D:4E:62:67:F4
+[201900]<< MStar >># setenv macaddr 
+[201902]<< MStar >># save
+[201902]Saving Environment to MMC...
+[201902]Writing to MMC(0)... 128 blocks written: OK
+[201902]128 blocks written: OK
+[201902]done
+[201909]<< MStar >># print macaddr  
+[201909]## Error: "macaddr" not defined
+[202108]<< MStar >>#   
+
+
+W:\638\Baseline_6A638_tvos_5.04\vendor\mstar\supernova\projects\customerinfo\inc
+
+
+
+
+
+
+
+
+
+
+
+

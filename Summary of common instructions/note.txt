@@ -1,0 +1,238 @@
+java-7-openjdk-amd64
+jdk1.6.0_33_x64
+
+1.常用指令：
+
+ps axjf  //查看哪些人在用服务器和在干什么 a用户的所有进程x无控制终端的进程j任务格式显示进程f树型格式
+
+
+ps -aux   按照 CPU 或者内存用量来筛选
+
+df -h    //查看硬盘使用情况，容量，剩余空间等
+
+grep -rni "hello,world" *   //熟练使用grep指令查找代码
+grep --include=*.{cpp,c,java,h} -inHre  "hdcp"  ./*
+
+
+*  表示当前目录所有文件，也可以是某个文件名
+-r 是递归查找
+-n 是显示行号
+-R 查找所有文件包含子目录
+-i 忽略大小写
+
+grep ‘test’ d*
+显示所有以d开头的文件中包含 test的行。
+
+croot  //切换到source build/env时的根目录
+
+make snod    //这个命令是可以快速打包system。是不会执行Android各种依赖文件，既在单编译apk之后，需要打包在system image时候，即可用此命令
+
+logcat |grep "keyCode"   //查看logcat里的关键字KeyCode
+
+setprop "persist.sys.needsecondhdcp" "1"    //在线修改prop属性示例
+
+find . -name "index*"  //查找指令示例
+
+echo 0 > /proc/sys/kernel/printk   //如何关掉底层烦银的打印，echo后面可以跟不同的参数，具体参数含义要再研究下
+
+vi 指令的深入学习，例如：如何快速跳到某一行、如何根据关键字找到代码、如何dd快速删除一行x删除一个...
+       ：set nu显示所有行号
+ 	跳到第一行gg 或者 :0 //最后一行G（shift g）:$//shift +4 行的最后一个字符
+	查找字符串 在命令模式下输入/xxx 按下enter键查找，按下n查找下一个，N上一个
+	匹配行首，字符串要以^开头
+     	匹配行尾，字符串要以＄结束
+    	
+
+
+top  和   busybox top
+
+dumpsys activity  //查看当前系统activity运行情况
+
+am start -n xxxx  //知道包名如何通过指令快速打开一个应用，例如工厂菜单：(先打开我的应用 包名可以通过
+dumpsys activity指令查看到)
+例如：
+com.example.pvrrecoadtest/.MainActivity
+  Stack #1:
+    Task id #30
+      TaskRecord{420e2960 #30 A=com.example.pvrrecoadtest U=0 sz=1}
+      Intent { flg=0x30200000 cmp=com.example.pvrrecoadtest/.MainActivity }
+
+am start -n mstar.factorymenu.ui/mstar.tvsetting.factory.ui.designmenu.DesignMenuActivity 快速调出工厂菜单
+
+am start -n com.suning.tv.ebuy/.ui.index.IndexActivity
+am start -n com.pplive.tvplayer/.browser.FileListActivity
+==================================================================================================================
+
+背光相关修改：
+
+1.背光在各通道各模式下的默认值修改：user_setting.sql
+	Z:\ppos\pptvcode\638\jinruirui\vendor\mstar\supernova\projects\board\INI\misc_PPTV\M215HGE\PPTVMODEL
+2.背光PWM相关修改：
+Z:\ppos\pptvcode\638\jinruirui\vendor\mstar\supernova\projects\board\INI\panel
+u32PeriodPWM            = 0xFFFF;
+u32DutyPWM              = 0x7F; 
+u16DivPWM               = 0x00; 
+bPolPWM                 = 1; #0:NON_INVERSE  （DUTY是否反向）
+u16MaxPWMvalue          = 0xFFFF; 
+u16MinPWMvalue          = 0x4CCC; （？？？）
+
+===================================================================================================================
+
+DQA ：
+
+1.TI5707功放喇叭相位反问题：修改5707驱动（mboot和supernova里）
+
+2.HDMI通道CEC,ARC功能NG：检查主板的CEC IO口是否和公版的一致，不一致会有问题；
+
+3.声音功率不达标：调整Customer_1.ini里声音曲线和sql数据库里各通道的声音prescale的值；
+
+4.ATV通道底噪超标，有明显底噪声：通过软件 NR降噪改善0x112D32由0000改为000F
+SetNrThreshold(0x0f);
+
+5.喇叭幅频响应在4K-20K频段NG;喇叭伴音失真度超标：调整声音曲线后OK
+
+6.DTMB：0db回波载噪比部分模式下不达标：导入最新R842驱动1.9E后测试OK
+（导入时遇到DTV不搜台的问题，修改了宏定义：R842_ALL_IMR_NOR 改成false）
+==================================================================================================================
+
+
+
+
+
+#############################################################################################
+
+optee方式的HDCP 2.2 KEY写入：
+
+1.通常我们绝大部分数据都存放在emmc的user区域（和android的userdata目录不是一个概念） ? emmc有两个boot区域（boot1和boot2）是独立于user区域的，常见容量在4MB左右， boot1目前存放了mstar的boot loader bin，boot2未使用 ? 本方案即利用emmc boot2分区作为optee的安全存储目录存放用户的重要安全数据，避免 数据意外丢失或被破坏 
+
+2./certificate/HDCP2/hdcp2_key_22.bin 
+
+3.bin的大小必须是1044字节；（key的加密方式和以前不一样，MSTAR特殊工具制作）
+
+4.开机时会去检查HDCP2里的key，有的话会出发烧录KEY到data/tee下，并将数据保存到boot2，且会设置一个标志位表明本机器已经烧录过KEY2.2，下次不会烧录。
+如果需要再次烧录，需要在Mboot指令行执行：
+mmc erase.boot 2
+
+5.烧录完Key后的首次开机需要出现如下打印才是OK：
+[ta log] [HDCP2X-TA] == HDCP Rx Key is valid key == ((TEE_HDCP_GetKeyFromInterTa:4922))
+
+[ta log] [HDCP2X-TA] == Read HDCP Rx Key and verify success == ((TEE_HDCP_GetKeyFromInterTa:4986))
+
+
+代码里的几处改动：
+1.supernova里projects\msrv\control\src\MSrv_Control_common.cpp
+
+2.安卓init.mooney.rc、fstab.mooney
+
+3.make_usb_upgrade.sh里要执行mmc erase.boot 2
+
+#############################################################################################
+
+
+========================================================================================================================================
+读写txt的方法：
+public static String readTxtFile(String filePath){
+        String lineTxt = null;
+        StringBuffer sb = new StringBuffer("");
+        try {
+            String encoding="GBK";
+            File file=new File(filePath);
+            if(file.isFile() && file.exists()){
+                InputStreamReader read = new InputStreamReader(
+                new FileInputStream(file),encoding);
+                BufferedReader bufferedReader = new BufferedReader(read);
+
+                while((lineTxt = bufferedReader.readLine()) != null){
+                    Log.d(TAG, ">> lineTxt = "+lineTxt);
+                    sb.append(lineTxt);
+                }
+                read.close();
+            }else{
+                Log.e(TAG, "can't find file!");
+                return null;
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "error when read");
+            e.printStackTrace();
+        }
+        return sb.toString();
+    }
+
+    public static void writeTxtFile(String str,String file)  
+    {
+        try {
+            FileWriter fw = new FileWriter(file);
+            File f = new File(file);
+            fw.write(str);
+            FileOutputStream os = new FileOutputStream(f);
+            DataOutputStream out = new DataOutputStream(os);
+            out.writeShort(2);
+            out.writeUTF("");
+            System.out.println(out);
+            fw.flush();
+            fw.close();
+            System.out.println(fw);
+        } catch (Exception e) {
+        }
+    }
+==================================================================================================================
+
+修改sh默认连接到bash的一种方法：
+
+sudo dpkg-reconfigure dash
+
+选择no 即可！
+==================================================================================================================
+
+828 ATV的最低 和 最高频点设置：
+#define BAND_VHF_L_START    ( 48.25 * 1000 ) //* TN_FREQ_SR)
+#define BAND_VHF_H_START    (154.25 * 1000 ) //* TN_FREQ_SR)
+#define BAND_UHF_START      (437.50 * 1000 ) //* TN_FREQ_SR)
+#define BAND_UHF_END        (863.25 * 1000 ) //* TN_FREQ_SR)
+
+828 DTV的频点范围：52.5MHz to 866MHz
+==================================================================================================================
+
+1.判断文件是否存在：
+if (access("/mnt/usb/sda1/mcast.ts", 0) == 0) {
+            printf("文件存在");
+        }
+
+去掉MAC字符串里的冒号：
+String tmpstr=wireMacAddr.replace(":","");
+
+int转换成十六进制大写：
+String strSize = Integer.toHexString(size).toUpperCase();
+		if (strSize.length() == 1) {
+			strSize = '0' + strSize; 
+		}
+
+==================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

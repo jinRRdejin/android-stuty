@@ -1,0 +1,191 @@
+utopia
+device/mstar/arbutus/libraries/utopia
+vendor/mstar/supernova/develop/lib/target/arm-gnueabi/monet/dynamic/hard_float/utopia
+
+
+http://117.135.159.4:8989/secure/Dashboard.jspa  用户名 jinruirui/密码 jinruirui(bug)
+
+http://116.228.90.154:8001/gerrit/  代码 用户名 jinruirui /密码 jinruirui
+
+
+
+vmstat   查PPTV内存使用情况   
+busybox top
+
+
+
+ git log . > /home/changjun/sboot/log2.txt
+代码提交：
+先git branch -r  
+查看提交的分之
+
+或者到.repo manifest 中查看提交的分之。是默认还有修改
+
+git push origin HEAD:refs/for/le50b610n
+git push origin HEAD:refs/for/pptv
+git push origin HEAD:refs/for/ppos
+
+git push origin HEAD:refs/for/le50b610n
+
+撤销git add
+ 
+git reset HEAD projects/board/monet/PQ_BIN/T580QVN05/Main_Color.bin
+git diff 文件名
+Fixbug
+
+Feature
+
+[Fixbug] <sup> <jira-id:478> 修复修改开机带出问题
+    [Module] sup| project
+    [Details]
+        Description     : 修复将开机默认进入设置为"电视"，开机后信号源通道中会出现无法操作黑屏的问题
+        Root cause      : none
+        Solution        : none
+        Side Effect     : none
+        Test Suggiestion: none
+
+
+[Feature] <device> <jira-id:98> 工厂菜单无纯色pattern，通过工厂菜单添加全屏刷屏幕颜色。
+[Module] device| /MTvFactory_2.0
+[Details
+    Description     : 通过测试模式右键件界面跳转到纯色pattern测试界面。
+    Root cause      : none
+    Solution        : none
+    Side Effect     : none
+    Test Suggiestion: none         
+
+
+[Feature] <jb> <jira-id:none> 设置U盘进入CTV工厂模式时关闭老化模式
+[Module] deveice|apps
+[Details]
+    Description     : 设置U盘进入CTV工厂模式时关闭老化模式
+    Root cause      : none
+    Solution        : none
+    Side Effect     : none
+    Test Suggiestion: none
+
+
+
+
+[Feature] <jb> <jira-id:none> 因BootAnimation图片太小对屏幕进行颜色填充
+[Module] frameworks| BootAnimation
+[Details]
+    Description     : 因BootAnimation图片太小对屏幕进行颜色填充
+    Root cause      : none
+    Solution        : none
+    Side Effect     : none
+    Test Suggiestion: none
+
+[Fixbug] <sup> <jira-id:183> 【MSD638】【PPTV】usb播放rmvb视频源闪黑屏的问题
+[Module] sup| lutopia
+[Details]
+    Description     : 通过USB播放RMVB 1024*576视频
+    Root cause      : none
+    Solution        : 更新utopia下的libapiXC.so文件
+    Side Effect     : none
+    Test Suggiestion: none
+
+[Feature] <framework > <jira-id:none> 重新提交修改开机流程
+    [Module] framework | base
+    [Details]
+        Description     : 未联网/联网的情况下开机画面：海尔logo + EVA动画/广告+系统准备中.
+        Root cause      : none
+        Solution        : none
+        Side Effect     : none
+        Test Suggiestion: none
+
+
+
+操作过程中遥控关机，开机过程中由EVA界面切换至开机广告时会不定时出现黑屏
+ssh-keygen -t rsa
+
+git config --global user.name jinruirui
+git config --global user.email jinruirui@cultraview.com
+ git config --list
+
+代码下载：repo init -u ssh://liu_hb@ppgerrit.com/Mstar648/manifest.git -b 648_cultraview -m cultraview.xml
+         repo sync
+	repo sync --force-sync
+
+（参考config文件）
+=================================================
+638 代码下载
+
+repo init -u ssh://ppgerrit.com/pptv/mst638_cultraview/manifest.git -m ppos.xml
+
+
+=============================================================
+mmc erase.boot 2 //擦除失效的KEY
+
+setenv macddr  //将烧录的MAC清除
+
+setenv factory_mode 1 //打开工厂模式
+//在线修改机型
+setenv pptv_model_id  K65U272108400000 
+setenv pptv_fac_flg 0
+saveenv
+reset
+
+=================================
+是在shell命令行输入新软件进行adb调试
+
+echo 0 > /proc/sys/kernel/printk
+setprop persist.service.adb.enable 1
+stop adbd
+start adbd
+reboot
+
+//start 不能输入太早
+重启后再次输入start adbd就可以
+
+====================================
+重复升级相同的刷机bin
+
+setenv  PPTV_UsbUpgradeCRC_Val
+save
+cu
+
+==================================
+机型切换的方法
+
+1、ppfactory-etc  内放置 _update 文档：例如 UT-N43F272002100000（关机开机自动修改）
+
+2、 PPTV  放置index.txt  CTV 遥控器RECORD键，F4键
+    工厂菜单操作  选项-导出升级页面，选择PPTV MODEL选项，右键即可写入
+
+=======================================
+在进行factory reset后
+menu 左上 左上返回
+
+现在使用
+ test键就在开机向导界面进入工
+
+
+===============================================
+mmc erase
+mmc creat MBOOT 0x00300000
+cleanallenv
+cu
+
+=====================================================
+648PPTV  在KON模式下按下遥控器F1键（最后一行左侧）可以调出80IRE白场
+                             F5重启会进入KON模式
+                             F4设置预设频点
+=====================================================
+K40F272204400000
+K40U272205400000
+K49U272107400000
+K55U272101400000
+K65U272108400000
+
+===========================================================
+@cv6a638_base:/ # getprop |grep -in "burn"
+[162807]112:[persist.sys.burningmode]: [1]
+[162834]root@cv6a638_base:/ # setprop "persist.sys.burningmode" "0"
+[162837]root@cv6a638_base:/ # getprop |grep -in "burn"                                 
+[162837]112:[persist.sys.burningmode]: [0]
+[162840]root@cv6a638_base:/ # sync
+[162842]root@cv6a638_base:/ # reboot
+
+
+<uses-permission android:name="android.permission.INSTALL_PACKAGES" />
