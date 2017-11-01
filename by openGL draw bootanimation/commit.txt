@@ -1,0 +1,52 @@
+diff --git a/cmds/bootanimation/BootAnimation.cpp b/cmds/bootanimation/BootAnimation.cpp
+index be9f24d..5989c7e 100755
+--- a/cmds/bootanimation/BootAnimation.cpp
++++ b/cmds/bootanimation/BootAnimation.cpp
+@@ -252,34 +252,17 @@ status_t BootAnimation::initTexture(void* buffer, size_t len)
+     const void* p = bitmap.getPixels();
+ 
+     GLint crop[4] = { 0, h, w, -h };
+-    int tw = 1 << (31 - __builtin_clz(w));
+-    int th = 1 << (31 - __builtin_clz(h));
+-    if (tw < w) tw <<= 1;
+-    if (th < h) th <<= 1;
+ 
++// MStar Android Patch Begin
+     switch (bitmap.getConfig()) {
+         case SkBitmap::kARGB_8888_Config:
+-            if (tw != w || th != h) {
+-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, tw, th, 0, GL_RGBA,
+-                        GL_UNSIGNED_BYTE, 0);
+-                glTexSubImage2D(GL_TEXTURE_2D, 0,
+-                        0, 0, w, h, GL_RGBA, GL_UNSIGNED_BYTE, p);
+-            } else {
+-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, tw, th, 0, GL_RGBA,
++                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA,
+                         GL_UNSIGNED_BYTE, p);
+-            }
+             break;
+ 
+         case SkBitmap::kRGB_565_Config:
+-            if (tw != w || th != h) {
+-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, tw, th, 0, GL_RGB,
+-                        GL_UNSIGNED_SHORT_5_6_5, 0);
+-                glTexSubImage2D(GL_TEXTURE_2D, 0,
+-                        0, 0, w, h, GL_RGB, GL_UNSIGNED_SHORT_5_6_5, p);
+-            } else {
+-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, tw, th, 0, GL_RGB,
++                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, w, h, 0, GL_RGB,
+                         GL_UNSIGNED_SHORT_5_6_5, p);
+-            }
+             break;
+         default:
+             break;
+@@ -816,8 +799,7 @@ bool BootAnimation::movie()
+     eglSwapBuffers(mDisplay, mSurface);
+     // MStar Android Patch Begin
+     // Restore the clearcolor to black
+-    //glClearColor(0,0,0,1);
+-    glClearColor(5.0/255.0, 29.0/255.0, 47.0/255.0, 1.0f );
++    glClearColor(0,0,0,1);
+     // MStar Android Patch End
+ 
+     glBindTexture(GL_TEXTURE_2D, 0);
