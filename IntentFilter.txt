@@ -1,0 +1,25 @@
+
+
+例子为通过插入U盘检测直接烧录key与Mac
+在onCreate中进行注册
+
+IntentFilter filter = new IntentFilter();
+filter.addAction(EVENT_MEDIA_MOUNTED);
+registerReceiver(mBroadcastReceiver, filter);
+
+
+   private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // TODO Auto-generated catch block
+            String action = intent.getAction();
+            Log.e(TAG, action);
+            if (EVENT_MEDIA_MOUNTED.equals(action)) {
+                Log.e(TAG, "writeToSpi");
+                MacUtils.writeToSpi(context);
+                UsbUpgradeHelper helper = new UsbUpgradeHelper(context);
+                helper.writeHdcpKey();
+
+			}
+        }
+    };
