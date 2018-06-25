@@ -11,3 +11,4 @@ https://blog.csdn.net/hongbochen1223/article/details/52957421
             abiFilters "x86","x86_64","armeabi-v7a","arm64-v8a"
         }add_library( # Sets the name of the library.
              hello-lib   3个地方
+https://blog.csdn.net/qq_25412055/article/details/79094919 加载视频并显示当前视频的帧图
