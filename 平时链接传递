@@ -16,3 +16,35 @@ https://github.com/sambhaji213/Horizontal-Recyclerview
 https://github.com/xiangzhihong/jingdongApp
 https://blog.csdn.net/qq_34662331/article/details/56671558
 https://blog.csdn.net/qq_34662331/article/details/56672701
+
+设置RecycleView的布局管理
+LinearLayoutManager linearLayoutManager = new LinearLayoutManager (this,LinearLayoutManager.VERTICAL.false);
+adapter.setLayoutManager(linearLayoutManager );
+设置RecycleView的Item间分割线
+adapter.addItemDecoration(new DividerItemDecoration(this,DividerIremDecoration.VERTICAL_LIST ))
+
+public interface OnItemClickListener{
+  void onItemClick(View view,int position);
+   void onItemLongClick(View view,int position);
+  
+}
+
+private OnitemClickListener mOnitemClickListener;
+
+添加一个方法
+
+public void setOnitemClickListener(OnitemClickListener listener){
+
+this.mOnitemClickListener = listener;
+}
+
+创建回调的触发是在onBindViewHolder(参数final类型)
+
+holder.intemView,setOnitemClickListener(new OnClicklistener()){
+
+@Override
+public void  onCick(view  view){
+	mOnitemClickListener.onItemClick(holder对应参数);
+}
+}
+然后在activity中即可通过adapter进行setOnitemClickListener方法的调用
