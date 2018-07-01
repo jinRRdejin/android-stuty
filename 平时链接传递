@@ -38,6 +38,8 @@ public void setOnitemClickListener(OnitemClickListener listener){
 this.mOnitemClickListener = listener;
 }
 
+
+
 创建回调的触发是在onBindViewHolder(参数final类型)
 
 holder.intemView,setOnitemClickListener(new OnClicklistener()){
@@ -48,3 +50,11 @@ public void  onCick(view  view){
 }
 }
 然后在activity中即可通过adapter进行setOnitemClickListener方法的调用
+
+intent=new Intent(TransmitDataActivity.this,MyActivity1.class);
+//保存String类型的值
+intent.putExtra("picturePath", "picturePath");
+
+//获得String类型的值
+String intentString=getIntent().getStringExtra("intent_string");
+
