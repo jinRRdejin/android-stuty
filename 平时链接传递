@@ -58,3 +58,14 @@ intent.putExtra("picturePath", "picturePath");
 //获得String类型的值
 String intentString=getIntent().getStringExtra("intent_string");
 
+
+    public void initDrawble(){
+        a = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_still_press, null);
+        b = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_still_press, null);
+        c = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_still_press, null);
+    }
+    public void setIma(ImageButton i1,ImageButton i2,ImageButton i3){
+        im1.setImageDrawable(a);
+        im2.setImageDrawable(b);
+        im3.setImageDrawable(c);
+
