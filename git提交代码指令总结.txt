@@ -1,81 +1,93 @@
-±¾µØÁ´½Ó IPv6 µØÖ·. . . . . . . . : fe80::adf9:8c2a:107f:2bae%15
-IPv4 µØÖ· . . . . . . . . . . . . : 192.168.3.21
-×ÓÍøÑÚÂë  . . . . . . . . . . . . : 255.255.255.0
-Ä¬ÈÏÍø¹Ø. . . . . . . . . . . . . : 192.168.3.1
 
 
-
-1¡¢ git fetch origin  ctv/helios-l-828:ctv/helios-l-828 ½«Ô¶³Ì²Ö¿â·ÖÖ®Í¬²½µ½±¾µØ
+1ã€ git fetch origin  ctv/helios-l-828:ctv/helios-l-828 å°†è¿œç¨‹ä»“åº“åˆ†ä¹‹åŒæ­¥åˆ°æœ¬åœ°
     git pull 
-2¡¢ git checkout  ctv/helios-l-828   ÎÄ¼ş´æÔÚ
-3¡¢ git log  ²é¿´Ìá½»ÈÕÖ¾
-4¡¢ git status  ²é¿´Ìá½»×´Ì¬
-5¡¢ git add . ½«¸Ä¶¯ÎÄ¼şÌí¼Óµ½²Ö¿â
-6¡¢ git status
-7¡¢ git commit   ½øÈëÌí¼ÓĞŞ¸ÄÄÚÈİËµÃ÷
+2ã€ git checkout  ctv/helios-l-828   æ–‡ä»¶å­˜åœ¨
+3ã€ git log  æŸ¥çœ‹æäº¤æ—¥å¿—
+4ã€ git status  æŸ¥çœ‹æäº¤çŠ¶æ€
+5ã€ git add . å°†æ”¹åŠ¨æ–‡ä»¶æ·»åŠ åˆ°ä»“åº“
+6ã€ git status
+7ã€ git commit   è¿›å…¥æ·»åŠ ä¿®æ”¹å†…å®¹è¯´æ˜
 
 
 git push origin HEAD:refs/for/ctv/helios-l-828
 
-ĞŞ¸Ä¸ü»»ÓÊÏä
+ä¿®æ”¹æ›´æ¢é‚®ç®±
 git config --global user.name "zhaolong"
 git config --global user.email "zhaolong@cultraview.com"
 
-µÚÒ»´ÎÌá½»¶¼ĞèÒª°²×°Hook
+ç¬¬ä¸€æ¬¡æäº¤éƒ½éœ€è¦å®‰è£…Hook
 gitdir=$(git rev-parse --git-dir); scp -p -P 29418 zhaolong@gerrit-p.moretv.cn:hooks/commit-msg ${gitdir}/hooks/
 
 
-git commit --amend  ĞŞ¸ÄËµÃ÷ÄÚÈİ
+git commit --amend  ä¿®æ”¹è¯´æ˜å†…å®¹
 
 
-git reset --hard d00ed33fb3bb31e3ab5576a7463fe237cc10e471  //Ê¹ÓÃ git reset ID À´»Ö¸´ÎÄ¼ş
+git reset --hard d00ed33fb3bb31e3ab5576a7463fe237cc10e471  //ä½¿ç”¨ git reset ID æ¥æ¢å¤æ–‡ä»¶
  
 git config --global user.name "Your Name"
 git config --global user.email you@example.com
-È«¾ÖµÄÍ¨¹ıvim ~/.gitconfigÀ´²é¿´
+å…¨å±€çš„é€šè¿‡vim ~/.gitconfigæ¥æŸ¥çœ‹
 
 
 git checkout l-cmc-828 
 git checkout ctv/helios-l-828 
-´ÓÔ¶³Ì·ÖÖ§ checkout ³öÀ´µÄ±¾µØ·ÖÖ§£¬³ÆÎª_¸ú×Ù·ÖÖ§(tracking branch)_¡£
-¸ú×Ù·ÖÖ§ÊÇÒ»ÖÖºÍÔ¶³Ì·ÖÖ§ÓĞÖ±½ÓÁªÏµµÄ±¾µØ·ÖÖ§¡£
-ÔÚ¸ú×Ù·ÖÖ§ÀïÊäÈëGit push£¬Git »á×ÔĞĞÍÆ¶ÏÓ¦¸ÃÏòÄÄ¸ö·şÎñÆ÷µÄÄÄ¸ö·ÖÖ§ÍÆËÍÊı¾İ¡£
-·´¹ıÀ´£¬ÔÚÕâĞ©·ÖÖ§ÀïÔËĞĞgit pull »á»ñÈ¡ËùÓĞÔ¶³ÌË÷Òı£¬²¢°ÑËüÃÇµÄÊı¾İ¶¼ºÏ²¢µ½±¾µØ·ÖÖ§ÖĞÀ´¡£
+ä»è¿œç¨‹åˆ†æ”¯ checkout å‡ºæ¥çš„æœ¬åœ°åˆ†æ”¯ï¼Œç§°ä¸º_è·Ÿè¸ªåˆ†æ”¯(tracking branch)_ã€‚
+è·Ÿè¸ªåˆ†æ”¯æ˜¯ä¸€ç§å’Œè¿œç¨‹åˆ†æ”¯æœ‰ç›´æ¥è”ç³»çš„æœ¬åœ°åˆ†æ”¯ã€‚
+åœ¨è·Ÿè¸ªåˆ†æ”¯é‡Œè¾“å…¥Git pushï¼ŒGit ä¼šè‡ªè¡Œæ¨æ–­åº”è¯¥å‘å“ªä¸ªæœåŠ¡å™¨çš„å“ªä¸ªåˆ†æ”¯æ¨é€æ•°æ®ã€‚
+åè¿‡æ¥ï¼Œåœ¨è¿™äº›åˆ†æ”¯é‡Œè¿è¡Œgit pull ä¼šè·å–æ‰€æœ‰è¿œç¨‹ç´¢å¼•ï¼Œå¹¶æŠŠå®ƒä»¬çš„æ•°æ®éƒ½åˆå¹¶åˆ°æœ¬åœ°åˆ†æ”¯ä¸­æ¥ã€‚
 
-git checkout -b [·ÖÖ§Ãû] [Ô¶³ÌÃû]/[·ÖÖ§Ãû]
+git checkout -b [åˆ†æ”¯å] [è¿œç¨‹å]/[åˆ†æ”¯å]
 
 git checkout --track origin/branch_name
 
-git branch -r         ²é¿´Ô¶³Ì·ÖÖ§
+git branch -r         æŸ¥çœ‹è¿œç¨‹åˆ†æ”¯
 
 
-git remote -v         ²é¿´Ô¶³Ì·ÖÖ§£¿
-$ git fetch origin master:temp     ´ÓÔ¶³Ì»ñÈ¡×îĞÂ°æ±¾µ½±¾µØ
-$ git diff temp       ±È½Ï±¾µØ²Ö¿âÓëÏÂÔØµÄtemp·ÖÖ§
-$ git merge temp      ºÏ²¢temp·ÖÖ§µ½±¾µØµÄmaster·ÖÖ§
-$ git branch -d temp  É¾³ıtemp¸Ã·ÖÖ§£º
+git remote -v         æŸ¥çœ‹è¿œç¨‹åˆ†æ”¯ï¼Ÿ
+$ git fetch origin master:temp     ä»è¿œç¨‹è·å–æœ€æ–°ç‰ˆæœ¬åˆ°æœ¬åœ°
+$ git diff temp       æ¯”è¾ƒæœ¬åœ°ä»“åº“ä¸ä¸‹è½½çš„tempåˆ†æ”¯
+$ git merge temp      åˆå¹¶tempåˆ†æ”¯åˆ°æœ¬åœ°çš„masteråˆ†æ”¯
+$ git branch -d temp  åˆ é™¤tempè¯¥åˆ†æ”¯ï¼š
 
 
-½¨Á¢±¾µØ¶ÔÓ¦·ÖÖ§
-git checkout --track »òÕß git checkout -b
-Èç£º
-git checkout --track  origin/dev-zhengqigit £¬
+å»ºç«‹æœ¬åœ°å¯¹åº”åˆ†æ”¯
+git checkout --track æˆ–è€… git checkout -b
+å¦‚ï¼š
+git checkout --track  origin/dev-zhengqigit ï¼Œ
 git  checkout -b dev-zhengqi  origin/dev-zhengqi
 
-½¨Á¢·ÖÖ§ºó£¬Ä¬ÈÏ»á½øµ½ĞÂ½¨µÄ·ÖÖ§Àï£¬Èç¹ûÏë½øÈ¥ÆäËû·ÖÖ§£¬¿ÉÒÔÍ¨¹ı
-git checkout ¼Ó·ÖÖ§ÃûÇĞ»»
-Èç:
+å»ºç«‹åˆ†æ”¯åï¼Œé»˜è®¤ä¼šè¿›åˆ°æ–°å»ºçš„åˆ†æ”¯é‡Œï¼Œå¦‚æœæƒ³è¿›å»å…¶ä»–åˆ†æ”¯ï¼Œå¯ä»¥é€šè¿‡
+git checkout åŠ åˆ†æ”¯ååˆ‡æ¢
+å¦‚:
 git checkout zhengqi
 
-$ git reset --hard HEAD^  °æ±¾»ØÍËµ½ÉÏÒ»°æ±¾
-$ git reset --hard 3628164  °æ±¾»ØÍËµ½¾ßÌåµÄ°æ±¾
+$ git reset --hard HEAD^  ç‰ˆæœ¬å›é€€åˆ°ä¸Šä¸€ç‰ˆæœ¬
+$ git reset --hard 3628164  ç‰ˆæœ¬å›é€€åˆ°å…·ä½“çš„ç‰ˆæœ¬
 
 
 
-1.ÔÚÄãµÄ±¾µØÄ¿Â¼ÏÂÊÖ¶¯É¾³ıÄãÒªÉ¾³ıµÄ¶«Î÷
-2.ÔÚ¿Í»§¶ËÊäÈë£ºgit commit -a -m "A file was deleted"
-3.ÔÚ¿Í»§¶Ë£ºgit push
-4.ÔÚ¿Í»§¶ËÊäÈëÄãµÄÓÃ»§ÃûºÍÃÜÂë
+1.åœ¨ä½ çš„æœ¬åœ°ç›®å½•ä¸‹æ‰‹åŠ¨åˆ é™¤ä½ è¦åˆ é™¤çš„ä¸œè¥¿
+2.åœ¨å®¢æˆ·ç«¯è¾“å…¥ï¼šgit commit -a -m "A file was deleted"
+3.åœ¨å®¢æˆ·ç«¯ï¼šgit push
+4.åœ¨å®¢æˆ·ç«¯è¾“å…¥ä½ çš„ç”¨æˆ·åå’Œå¯†ç 
 
-Ò»°ãÎÒÃÇ¾ÍÀûÓÃ git push --set-upstream origin branch_name À´ÔÚÔ¶³Ì´´½¨Ò»¸öÓë±¾µØbranch_name ·ÖÖ§Í¬ÃûµÄ·ÖÖ§²¢¸ú×Ù£»ÀûÓÃ git checkout --track orgin/branch_name À´ÔÚ±¾µØ´´½¨Ò»¸öÓë branch_name Í¬Ãû·ÖÖ§¸ú×ÙÔ¶³Ì·ÖÖ§¡£
+ä¸€èˆ¬æˆ‘ä»¬å°±åˆ©ç”¨ git push --set-upstream origin branch_name æ¥åœ¨è¿œç¨‹åˆ›å»ºä¸€ä¸ªä¸æœ¬åœ°branch_name åˆ†æ”¯åŒåçš„åˆ†æ”¯å¹¶è·Ÿè¸ªï¼›åˆ©ç”¨ git checkout --track orgin/branch_name æ¥åœ¨æœ¬åœ°åˆ›å»ºä¸€ä¸ªä¸ branch_name åŒååˆ†æ”¯è·Ÿè¸ªè¿œç¨‹åˆ†æ”¯ã€‚
+
+
+
+å°†forkè¿‡æ¥çš„é¡¹ç›®çš„æœ€æ–°çš„æ”¹åŠ¨ åŒæ­¥åˆ°çŸ¥å·±branchçš„æ–¹æ³•
+git remote add upstream git@xxx.git
+git fetch upstream
+git checkout master
+git merge upstream/master
+
+
+
+
+
+
+
+
+
 
