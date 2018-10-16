@@ -82,6 +82,27 @@ git fetch upstream
 git checkout master
 git merge upstream/master
 
+1. git stash      保存当前改变
+2. git pull       更新代码，避免冲掉别人的代码
+3. git stash pop  将第一步保存的代码回滚回来
+4. 解决冲突
+    （此处缺乏解决冲突的实例）
+冲突处内容大致如下：
+<<<<<<< HEAD
+b789
+=======
+b45678910
+>>>>>>> 6853e5ff961e684d3a6c02d4d06183b5ff330dcc
+直接进行编辑即可。
+5. git add    添加新创建的文件
+6. git commit 提交代码
+7. git pus    推送代码
+
+如果是cherrypick过程中需要解冲突的，打开冲突的文件，编辑后
+git add 解过冲突的文件
+git cherry-pick --continue
+完成cherrypick
+
 
 
 
