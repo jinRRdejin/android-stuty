@@ -72,4 +72,13 @@ String intentString=getIntent().getStringExtra("intent_string");
         im1.setImageDrawable(a);
         im2.setImageDrawable(b);
         im3.setImageDrawable(c);
+	注意事项:
+
+1.测试方法必须使用@test修饰
+2.测试方法必须使用public void 进行修饰
+3.新建一个代码目录来存放我们的测试代码
+4.测试类包应该和我们的被测试包保持一致
+5.测试单元中的方法必须可以独立测试,测试方法间不能有任何的依赖
+6.测试类使用Test作为类的后缀名(不是必须)
+7.测试方法使用test作为方法的前缀名(不是必须)
 
