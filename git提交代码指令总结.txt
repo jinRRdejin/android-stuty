@@ -104,6 +104,11 @@ git cherry-pick --continue
 完成cherrypick
 
 
+ git log -S aaa filepath  查看具体这个文件的这个字符被谁改动
+ git blame 类名 方法 ，问责
+ gitblame -L 203，203 文件路径
+
+
 
 
 
