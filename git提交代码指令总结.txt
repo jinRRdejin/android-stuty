@@ -107,7 +107,7 @@ git cherry-pick --continue
  git log -S aaa filepath  查看具体这个文件的这个字符被谁改动
  git blame 类名 方法 ，问责
  gitblame -L 203，203 文件路径
-
+ git reset HEAD 文件名称 针对已经add的文件，不想commit了，通过此指令
 
 
 
