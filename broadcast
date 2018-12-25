@@ -3,3 +3,5 @@ Android中AlarmManager详解以及利用PendingIntent设置闹钟
 https://blog.csdn.net/qq_28330221/article/details/61616081
 设置特定时间在某个时间点去执行自己的程序
 比如注册一个广播，设置每隔一天发送这条广播，在广播onReceive方法中执行自己的逻辑代码
+
+广播的安全：设置广播的发送与接收权限，在broadcast中生命权限，在receiver中 添加使用权限，发送广播是标明权限
