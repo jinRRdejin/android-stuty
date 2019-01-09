@@ -120,6 +120,18 @@ git cherry-pick --continue
   git rebase --continue
   如果你想放弃这次压缩的话，执行以下命令：
   git rebase --abort
+  
+  打patch
+git diff  > patch
+git diff  --cached > patch
+git diff  branchname --cached > patc
+       1)两个节点之间的提交： git format-patch  节点A   节点B
+        2)单个节点： git format-patch -1 节点A （-n就表示要生成几个节点的提交）
+        3)最近一次提交节点的patch ：git format-patch HEAD^ 依次类推……
+        2应用patch：
+先检查patch文件：git apply --stat newpatch.patch
+检查能否应用成功：git apply --check newpatch.patch
+打补丁：git am --signoff < newpatch.patch
 
 
 
