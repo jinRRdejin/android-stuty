@@ -1,0 +1,12 @@
+1、standard 模式
+默认的启动模式不做任何设置，每次启动系统都会创建一个新的activity实例。
+2、singletop
+主要区别就是当一个singleTop模式的Activity已经位于任务栈的栈顶，再去启动它时，不会再创建新的实例,如果不位于栈顶，就会创建新的实例
+3、singleTask
+SingleTask模式的Activity在同一个Task内只有一个实例，如果Activity已经位于栈顶，系统不会创建新的Activity实例，
+和singleTop模式一样。但Activity已经存在但不位于栈顶时，系统就会把该Activity移到栈顶，并把它上面的activity出栈
+4、singleInstance
+singleInstance Activity在整个系统里只有一个实例，启动一singleInstanceActivity时，系统会创建一个新的任务栈，并且这个任务栈只有他一个Activity。
+SingleInstance模式并不常用，如果我们把一个Activity设置为singleInstance模式，你会发现它启动时会慢一些，切换效果不好，影响用户体验。
+它往往用于多个应用之间，例如一个电视launcher里的Activity，通过遥控器某个键在任何情况可以启动，这个Activity就可以设置为singleInstance模式，
+当在某应用中按键启动这个Activity，处理完后按返回键，就会回到之前启动它的应用，不影响用户体验
