@@ -76,6 +76,9 @@ $ git reset --hard 3628164  版本回退到具体的版本
 
 
 
+git show --stat  查看修改文件列表
+git log --stat
+
 将fork过来的项目的最新的改动 同步到知己branch的方法
 git remote add upstream git@xxx.git
 git fetch upstream
