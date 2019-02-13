@@ -1,6 +1,6 @@
 Arraylist linkedList
 
-arraylist 使用了数组的实现
+arraylist 使用了数组的实现，即基于动态数组的
 linkedlist 使用双向链表数据结构，链表由表项链接而成，一个表项包含：元素内容，前驱表，后驱表
 
 1、增加元素在列表尾端
@@ -35,3 +35,12 @@ foreach(110)>iterator(81)>for(16)
 linkedlist 
 foreach(78)>iterator(15)  for(无穷大)
 在linkedList中要避免使用for循环
+
+6、对于随机访问arrayList优于LinkedList
+ 对于随机访问get和set，ArrayList要优于LinkedList，
+ arrayList 直接返回index位置上的元素，LinkedList要移动指针，通过for循环进行查找
+
+
+
+
+
