@@ -1,0 +1,11 @@
+对象与对象引用
+
+Person person;
+person = new Person("张三");
+
+第一个person 操纵的标识符实际是指向一个对象的引用，是一个引用 。第二个用new创建的person则为对象。
+一个引用可以指向多个对象，一个对象也可指向多个引用。
+
+Person person1 = new Person("张三");
+Person person2 = person1; 
+如person1 与person2 都指向了张三这个对象。
