@@ -9,3 +9,8 @@ person = new Person("张三");
 Person person1 = new Person("张三");
 Person person2 = person1; 
 如person1 与person2 都指向了张三这个对象。
+
+堆(heap) : 他是最大的一块区域，用于存放对象实例和数组，是全局共享的。
+栈(stack) : 全称为虚拟机栈，主要存储基本数据类型，以及对象的引用，私有线程
+方法区(Method Area) : 在class被加载后的一些信息 如常量，静态常量这些被放在这里，在Hotspot里面我们将它称之为永生代
+
