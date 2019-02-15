@@ -1,0 +1,19 @@
+Android 从下到上依次分为 Linux 内核层kernel、运行库libraries、应用程序框架层application framework、应用程序层application
+
+Linux kernel ：Android 是操作系统 底层是基于Linux，负责硬件的程序驱动，display camera flashmemory 网络 电源 内存管理 系统安全等。
+
+libraries and runtime：libraries 即c/c++函数库部分，大多数都是开放源代码的函数库，例如webkit（引擎），该函数库负责 android网页浏览器的运行
+例如标准的c函数库libc、openssl、sqlite等，当然也包括支持游戏开发2dsgl和 3dopengles，在多媒体方面有mediaframework框架来支持各种影音和图形文件的播放与显示，
+例如mpeg4、h.264、mp3、 aac、amr、jpg和png等众多的多媒体文件格式。
+
+android的runtime负责解释和执行生成的dalvik格式的字节码。
+JVM运行的是Java字节码，dalvik运行的是dalvik字节码。二者指令集不同
+dalvik可执行文件体积更小。dalvik只有一个dex文件(不使用dex分包情况下），所有类文件共享同一个常量池，所以相同的常量只出现一次。
+
+applicationframework 我们学习Android也主要学的就是这一层，我们通过这些各种各样的框架来实现我们的Application，使用该层封装好的api进行快速开发
+
+applications:该层是java的应用程序层，android内置的googlemaps、e-mail、即时通信工具、浏览器、mp3播放器等处于该层，
+java开发人员开发的程序也处于该层，而且和内置的应用程序具有平等的位置，可以调用内置的应用程序，也可以替换内置的应用程序。
+
+上面的四个层次，下层为上层服务，上层需要下层的支持，调用下层的服务，这种严格分层的方式带来的极大的稳定性、
+灵活性和可扩展性，使得不同层的开发人员可以按照规范专心特定层的开发。
