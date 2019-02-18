@@ -10,6 +10,12 @@ android的runtime负责解释和执行生成的dalvik格式的字节码。
 JVM运行的是Java字节码，dalvik运行的是dalvik字节码。二者指令集不同
 dalvik可执行文件体积更小。dalvik只有一个dex文件(不使用dex分包情况下），所有类文件共享同一个常量池，所以相同的常量只出现一次。
 
+在驱动上层又多了一层硬件抽象层：安卓驱动硬件的方式与Linux不尽相同。传统Linux的驱动完全存活于内核空间。
+Android则在内核外部增加了硬件抽象层(HAL, Hardware Abstraction Layer)，把一部分驱动功能放到HAL层中。
+安卓为什么费尽麻烦增加一个HAL呢？为了保护源代码。Linux内核采用了GPL协议，所以硬件生产商想要支持Linux系统，
+必须遵照GPL协议公开硬件驱动的源代码。但这些源代码中包含有许多硬件的设计信息，牵涉到硬件生产商的核心利益。
+而增加了HAL层之后，硬件厂商就不需要开放所有的驱动代码了。
+
 applicationframework 我们学习Android也主要学的就是这一层，我们通过这些各种各样的框架来实现我们的Application，使用该层封装好的api进行快速开发
 
 applications:该层是java的应用程序层，android内置的googlemaps、e-mail、即时通信工具、浏览器、mp3播放器等处于该层，
