@@ -1,0 +1,75 @@
+
+Android中AlarmManager详解以及利用PendingIntent设置闹钟
+
+设置特定时间在某个时间点去执行自己的程序
+比如注册一个广播，设置每隔一天发送这条广播，在广播onReceive方法中执行自己的逻辑代码
+广播的安全：设置广播的发送与接收权限，在broadcast中生命权限，在receiver中 添加使用权限，发送广播是标明权限 uses-permission permission
+
+通过alarmManager Intent PendingIntent BrocastReceiver 设置定时操作。
+通过 Calendar设置一个未来的执行时间，Intent如果需要携带信息可通过bundle
+
+AlarmManager有三个常用的方法： 
+（1）：设置一次性闹钟： 
+AlarmManager.set(int type，long startTime，PendingIntent pendingIntent )； 
+（2）：该方法用于设置重复闹钟： 
+setRepeating(int type，long startTime，long intervalTime，PendingIntent pendingIntent )； 
+（3）：该方法也用于设置重复闹钟： 
+setInexactRepeating（int type，long startTime，long intervalTime，PendingIntent pendingIntent ）；
+
+参数：int type： 闹钟的类型，常用的有5个值 
+分别是： 
+a： AlarmManager.ELAPSED_REALTIME 表示闹钟在手机睡眠状态下不可用，该状态下闹钟使用相对时间（相对于系统启动开始），状态值为3；
+
+b：AlarmManager.ELAPSED_REALTIME_WAKEUP 表示闹钟在睡眠状态下会唤醒系统并执行提示功能，该状态下闹钟也使用相对时间，状态值为2；
+
+c：AlarmManager.RTC 表示闹钟在睡眠状态下不可用，该状态下闹钟使用绝对时间，即当前系统时间，状态值为1；
+
+d：AlarmManager.RTC_WAKEUP 表示闹钟在睡眠状态下会唤醒系统并执行提示功能，该状态下闹钟使用绝对时间，状态值为0；
+
+e：AlarmManager.POWER_OFF_WAKEUP 表示闹钟在手机关机状态下也能正常进行提示功能，所以是5个状态中用的最多的状态之一，该状态下闹钟也是用绝对时间，状态值为4。
+
+
+
+ //添加提醒
+    public void addAlarm() {
+        Log.d("jrr", "addAlarm:... ");
+        Intent intent = new Intent("com.test.jrr");
+        Context context = getApplicationContext();
+        RemaindReceiver rc = new RemaindReceiver();
+        context.registerReceiver(rc,getfilter());
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.add(Calendar.SECOND,3);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context,0,intent,0); //flag为0 代表pendingtent不带参数
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+            AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            Log.d("jrr", "addAlarm: set alarm time ");
+            am.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
+//            am.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),5000,pendingIntent);
+        }
+    }
+
+    public IntentFilter getfilter() {
+        final IntentFilter filter = new IntentFilter();
+        filter.addAction("com.test.jrr");
+        return filter;
+    }
+    
+    public class RemaindReceiver extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        Log.d("jrr", "onReceive: onReceive ...");
+
+        String action = intent.getAction();
+
+        if(context == null){
+            return;
+        }
+
+        if("com.test.jrr".equals(action)){
+            Log.d("jrr", "onReceive: to do anything");
+        }
+    }
+}
