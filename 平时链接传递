@@ -82,3 +82,9 @@ String intentString=getIntent().getStringExtra("intent_string");
 6.测试类使用Test作为类的后缀名(不是必须)
 7.测试方法使用test作为方法的前缀名(不是必须)
 
+ *                 功能 一部分一天log上传一次，从aplication的onCreate方法开始。每隔一天发送自定义action一个广播，
+ *                 在onReceiver方法中先判断上次上传的时间，上次report以sharePreference形式存储的，减去当前时间如果大于一天继续
+ *                 否则结束，继续的话先判断WiFi是否连接，WiFi没有连接就注册广播，一旦连接继续，调用onreport方法，广播不能耗时操作
+ *                 利用handler HandlerThread异步线程操作  具体逻辑中将以sharePreference存储的log
+ *                 List<LinkedHashMap<String, String>>
+
