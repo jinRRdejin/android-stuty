@@ -5,3 +5,23 @@
     }
     
     implementation(name: 'vision-china-release', ext: 'aar')
+    
+    
+    android library 编译jar包的方法
+    
+    //task to delete the old jar
+    task deleteOldJar(type: Delete) {
+        delete 'release/AndroidPlugin.jar'
+    }
+
+
+//task to export contents as jar
+    task exportJar(type: Copy) {
+        from('build/intermediates/bundles/release/')
+        into('release/')
+        include('classes.jar')
+        ///Rename the jar
+        rename('classes.jar', 'AndroidPlugin.jar')
+    }
+
+    exportJar.dependsOn(deleteOldJar, build)
