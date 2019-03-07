@@ -1,0 +1,7 @@
+
+    flatDir {
+            dirs 'libs'
+        }
+    }
+    
+    implementation(name: 'vision-china-release', ext: 'aar')
