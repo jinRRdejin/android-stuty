@@ -1,0 +1,10 @@
+抓取打印  db logcat -v time > D:Sen.txt
+
+am stack list 打印Activity任务栈列表 
+am start -n com.baoming/.activity
+am startservice [options] <INTENT>启动service
+am broadcast [options] <INTENT>通过指定的intent参数发送一个广播
+
+pm path com.baoming 查看包名路径
+getprop 列出系统所有属性
+adb shell dumpsys activity activities  查看Activity任务栈列表getprop | findstr "gsm" 列出包含gsm的属性 
