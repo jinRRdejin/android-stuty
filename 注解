@@ -1,0 +1,4 @@
+SuppressLint或者@SuppressWarnings黄色警告
+不做处理并不影响程序的运行，但是如果解决这些问题，则可以提高程序的安全性 可用性 性能等。
+https://blog.csdn.net/cajian3/article/details/52351287
+https://blog.csdn.net/qq_34706837/article/details/54964306
