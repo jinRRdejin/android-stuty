@@ -14,3 +14,17 @@ https://blog.csdn.net/qq_34706837/article/details/54964306
 权限注解
 使用 @RequiresPermission 注解可以验证方法调用方的权限
 
+service 前台后台的启动	
+crash 问题一般是异常未捕获导致的，出现最多的就是空指针（对象未实例化），还有一些强转
+一般是开发在多线程中未对临界资源做很好的处理，导致一个线程资源释放一个线程持有出现空指针异常IllegalStateException
+crash 组合检测启动四个引擎 启动第二个的时候第一个被上层stop了 后面再remove
+找到对应的drobox log——main文件查看crash的进程已经包名 
+crash 跟bitmap有关代码整改有个方法bitmap 作为参数传入我们方法bm = bm.copy(Bitmap.Config.ARGB_8888, true);  图片预期的结构 unmutable mutable
+整改提示不能拷贝给自己换成reconfigure
+Codex问题 多余的权限申请 缺少判空多余判空，还有一些地方滥用布尔值 对一个私有方法加锁Object 对象所用this就行
+Object 对象锁的使用
+线程池的使用 模板模式的使用一次性完成执行顺序和固定不变部分，可变部分交由子类完成 例如创建processor对象完成线程池的创建，各个对象的赋值，
+并一致通过父类的start方法启动子类的runnable方法拿到结果后，set结果 调用callback接口完成结果回调
+长短文本能力上云的
+JsonObjecct  
+Gson  在父类构造方法中创建线程池，然后调用analyzeText方法 获取到runnable 对传入得message进行转换处理上传
