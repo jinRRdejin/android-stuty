@@ -1,6 +1,24 @@
 https://blog.csdn.net/happy_love1990/article/details/79220986 // 接口的使用方法详细介绍
 https://blog.csdn.net/dr8737010/article/details/7643994 JNI详解
 
+project Structor 有个安装ndk的目录 ndk关联
+可以先在class文件中创建一个native方法
+生成jni层的头文件
+在app/src/main/java 路径下 javah -d ../jni 包名+类 有个红色警告 先编译一下有个异常
+javac -h
+在gradle.protity android.usedeprecateNdk=true;
+zai jni层创建一个cpp文件
+在CPP文件中引入头文件
+在build.gradle  ndk{
+ modelName "hello"
+}
+JNI方法的签名 native方法的签名
+[先clean下工程]
+APP/build/intermediates/classes/debug   javap -s 包名.类名
+在JNI的cpp文件中打印log ndk中添加 IdLibs("log")
+
+
+
 
 https://blog.csdn.net/hongbochen1223/article/details/52957421
 
