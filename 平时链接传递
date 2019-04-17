@@ -1,5 +1,6 @@
 https://blog.csdn.net/happy_love1990/article/details/79220986 // 接口的使用方法详细介绍
 https://blog.csdn.net/dr8737010/article/details/7643994 JNI详解
+https://blog.csdn.net/hukou6335490/article/details/83687419  jniCamke详解
 
 project Structor 有个安装ndk的目录 ndk关联
 可以先在class文件中创建一个native方法
