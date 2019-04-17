@@ -1,4 +1,4 @@
-
+ls|xargs du -sh 查看该目录下所有文件大小
 
 1、 git fetch origin  ctv/helios-l-828:ctv/helios-l-828 将远程仓库分之同步到本地
     git pull 
