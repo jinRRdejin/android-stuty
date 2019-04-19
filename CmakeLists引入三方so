@@ -1,0 +1,63 @@
+以libthree.so因为为例
+
+一、引入so与头文件地址
+例如 三方so与头文件添加在与APP同目录下，如下为以Cmakelist路径起，进入到distribution当前路径
+# configure import libs
+set(distribution_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../../distribution)
+
+二、添加lib，SHARED类型，是IMPORTED 引入的库
+add_library(libthree
+             SHARED
+             IMPORTED)
+三、设置 库的属性   里面是名称 ，属性：引入地址把我们的真实地址填写进去
+set_target_properties(libthree
+                       PROPERTIES IMPORTED_LOCATION
+                       ${distribution_DIR}/three/lib/${ANDROID_ABI}/libthree.so)
+四、引入头文件，设置编译类型
+target_include_directories(native-lib PRIVATE
+                           ${distribution_DIR}/three/include)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
+
+五制定连接库
+target_link_libraries( # Specifies the target library.V
+        libthree
+        android
+        log
+        # Links the target library to the log library
+        # included in the NDK.
+        ${log-lib})
+        
+        
+build.gralde 也要对应设置
+在defaultConfig中设置
+ externalNativeBuild {
+            cmake {
+                arguments '-DANDROID_STL=c++_static'
+                abiFilters "arm64-v8a"
+            }
+        }
+在Android中设置
+
+    sourceSets {
+        main {
+            // let gradle pack the shared library into apk
+            jniLibs.srcDirs = ['../distribution/three/lib']
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+        }
+    }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
