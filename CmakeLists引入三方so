@@ -53,6 +53,25 @@ build.gralde 也要对应设置
     
     针对符合JNI格式的so，只需引入SO已经对应头文件，但是native方法需要放在与原来的包名路径下的原来的类名下
     Cmake文件下要引入头文件所在文件夹例如 在include 下 include_directories(${CMAKE_SOURCE_DIR}/src/main/cpp/include)。其配置相同
+    
+    将so放置jniLibs文件夹中 build,gradle 
+     sourceSets {
+        main {
+            // let gradle pack the shared library into apk
+            jniLibs.srcDirs = ['src/main/jniLibs/']
+        }
+    }
+    1 引入头文件
+    include_directories(${CMAKE_SOURCE_DIR}/src/main/cpp/include)
+    #2 添加lib，SHARED类型，是IMPORTED 引入的库
+add_library(libone
+        SHARED
+        IMPORTED)
+
+#3设置 库的属性   里面是名称 ，属性：引入地址把我们的真实地址填写进去
+set_target_properties(libone
+        PROPERTIES IMPORTED_LOCATION
+        ${CMAKE_SOURCE_DIR}/src/main/jniLibs/${ANDROID_ABI}/libone.so)
         
         
         
