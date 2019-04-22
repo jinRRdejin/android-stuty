@@ -50,6 +50,9 @@ build.gralde 也要对应设置
             path "src/main/cpp/CMakeLists.txt"
         }
     }
+    
+    针对符合JNI格式的so，只需引入SO已经对应头文件，但是native方法需要放在与原来的包名路径下的原来的类名下
+    Cmake文件下要引入头文件所在文件夹例如 在include 下 include_directories(${CMAKE_SOURCE_DIR}/src/main/cpp/include)。其配置相同
         
         
         
